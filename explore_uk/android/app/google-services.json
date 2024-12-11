@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "609664185784",
+    "project_id": "exploreuk-e0897",
+    "storage_bucket": "exploreuk-e0897.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609664185784:android:9c21b0dd114fb18d5f0b4d",
+        "android_client_info": {
+          "package_name": "com.example.explore_uk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGDycNP2ho2K9j6ozlLmn3BzTWI97XZvc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,5 @@
-import 'package:explore_uk/pages/signup.dart';
+// import 'package:explore_uk/pages/signup.dart';
+import 'package:explore_uk/pages/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,7 +19,7 @@ class _LandingPageState extends State<LandingPage> {
         decoration: BoxDecoration(
           color: Colors.black,
           image: DecorationImage(
-              image: AssetImage('assets/images/tagore.jpg'),
+              image: AssetImage('assets/images/blk.jpg'),
               fit: BoxFit.cover,
               opacity: 0.5),
         ),
@@ -68,7 +69,7 @@ class _LandingPageState extends State<LandingPage> {
                 GestureDetector(
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SignupPage()));
+                        MaterialPageRoute(builder: (context) => Wrapper()));
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 15),
