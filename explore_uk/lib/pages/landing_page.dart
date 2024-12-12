@@ -19,7 +19,7 @@ class _LandingPageState extends State<LandingPage> {
         decoration: BoxDecoration(
           color: Colors.black,
           image: DecorationImage(
-              image: AssetImage('assets/images/blk.jpg'),
+              image: AssetImage('assets/images/green.jpg'),
               fit: BoxFit.cover,
               opacity: 0.5),
         ),
