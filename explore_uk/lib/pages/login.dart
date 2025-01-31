@@ -1,5 +1,8 @@
+import 'package:explore_uk/pages/forgot.dart';
+import 'package:explore_uk/pages/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -21,19 +24,29 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Login'), backgroundColor: Colors.amber),
-      body: Column(
-        children: [
-          Padding(padding: EdgeInsets.all(20)),
-          TextField(
-            controller: email,
-            decoration: InputDecoration(hintText: 'Email'),
-          ),
-          TextField(
-            controller: password,
-            decoration: InputDecoration(hintText: 'Password'),
-          ),
-          ElevatedButton(onPressed: (() => signIn()), child: Text('Login'))
-        ],
+      body: Padding(
+        padding: EdgeInsets.all(40),
+        child: Column(
+          children: [
+            TextField(
+              controller: email,
+              decoration: InputDecoration(hintText: 'Email'),
+            ),
+            TextField(
+              controller: password,
+              decoration: InputDecoration(hintText: 'Password'),
+            ),
+            SizedBox(height: 15),
+            ElevatedButton(onPressed: (() => signIn()), child: Text('Login')),
+            SizedBox(height: 15),
+            ElevatedButton(
+                onPressed: (() => Get.to(Signup())), child: Text('signup')),
+            SizedBox(height: 15),
+            ElevatedButton(
+                onPressed: (() => Get.to(Forgot())), child: Text('send link')),
+            SizedBox(height: 15),
+          ],
+        ),
       ),
     );
   }

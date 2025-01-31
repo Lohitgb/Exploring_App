@@ -1,21 +1,20 @@
-import 'package:explore_uk/pages/home.dart';
 import 'package:explore_uk/pages/wrapper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SignupPage extends StatefulWidget {
-  const SignupPage({super.key});
+class Signup extends StatefulWidget {
+  const Signup({super.key});
 
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  State<Signup> createState() => _SignupState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _SignupState extends State<Signup> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
-  signup() async {
+  Signup() async {
     await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email.text, password: password.text);
     Get.offAll(Wrapper());
@@ -25,22 +24,23 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('signupPage'),
+        title: Text('signup'),
+        backgroundColor: Colors.blue,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            TextField(
-                controller: email,
-                decoration: InputDecoration(hintText: 'enter email')),
-            TextField(
-              controller: password,
-              decoration: InputDecoration(hintText: 'enter password'),
-            ),
-            ElevatedButton(onPressed: (() => HomePage()), child: Text('signup'))
-          ],
-        ),
+        padding: EdgeInsets.all(20),
+        child: Column(children: [
+          TextField(
+            controller: email,
+            decoration: InputDecoration(hintText: 'email'),
+          ),
+          TextField(
+            controller: password,
+            decoration: InputDecoration(hintText: 'password'),
+          ),
+          SizedBox(height: 15),
+          ElevatedButton(onPressed: (() => Signup()), child: Text('signup'))
+        ]),
       ),
     );
   }
