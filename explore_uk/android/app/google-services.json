@@ -1,26 +1,44 @@
 {
   "project_info": {
-    "project_number": "264963984952",
-    "project_id": "explore-uk-8c284",
-    "storage_bucket": "explore-uk-8c284.firebasestorage.app"
+    "project_number": "624959196075",
+    "project_id": "exploreuk-5dea7",
+    "storage_bucket": "exploreuk-5dea7.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:264963984952:android:c4d92673f2d8753ecfe0cd",
+        "mobilesdk_app_id": "1:624959196075:android:5a5d0ab7f039e169eaa0ee",
         "android_client_info": {
           "package_name": "com.example.explore_uk"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "624959196075-hs26jh09h03cqqqmk91md7ht2v07if7b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.explore_uk",
+            "certificate_hash": "6024bde7746309743a1ef1718ad657125dcd8110"
+          }
+        },
+        {
+          "client_id": "624959196075-j500bkhn9bphk0p1r4ljs7gv076pgeun.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyDNkXGZdfHiQ4duAVeyS_eLyT6Urav-jx0"
+          "current_key": "AIzaSyC9z9C3_LBWC1KLWJn1MBkcOJHP1VutT1o"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "624959196075-j500bkhn9bphk0p1r4ljs7gv076pgeun.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
