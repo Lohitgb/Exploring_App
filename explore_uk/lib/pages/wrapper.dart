@@ -1,5 +1,4 @@
 import 'package:explore_uk/pages/home.dart';
-import 'package:explore_uk/pages/login.dart';
 import 'package:explore_uk/pages/signin.dart';
 import 'package:explore_uk/pages/verify.dart';
 import 'package:firebase_auth/firebase_auth.dart';
