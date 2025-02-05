@@ -1,6 +1,12 @@
 import 'dart:ui';
 
+import 'package:explore_uk/pages/forgot.dart';
+import 'package:explore_uk/pages/signup.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -15,6 +21,27 @@ class _SignInState extends State<SignIn> {
   TextEditingController mailcontroller = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
 
+  bool isloading = false;
+
+  signIn() async {
+    setState(() {
+      isloading = true;
+    });
+    //error handling part using firebase auth exception and snackbar
+    try {
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      Get.snackbar('Email nd password not matching !!', e.code,
+          snackPosition: SnackPosition.TOP);
+    } catch (e) {
+      Get.snackbar('error msg', e.toString());
+    }
+    setState(() {
+      isloading = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +50,7 @@ class _SignInState extends State<SignIn> {
         fit: StackFit.expand,
         children: [
           Image.asset(
-            'assets/images/yana2.jpg',
+            'assets/images/forest.jpg',
             fit: BoxFit.cover,
           ),
           BackdropFilter(
@@ -32,11 +59,9 @@ class _SignInState extends State<SignIn> {
           ),
           Padding(
             padding: EdgeInsets.all(50),
-            child: Container(
-              width: 4,
-              height: 4,
-              color: Colors.amber,
-            ),
+            // child: Container(
+            // color: Colors.amber,
+            // ),
           ),
           SizedBox(
             height: 30,
@@ -44,48 +69,217 @@ class _SignInState extends State<SignIn> {
           Column(
             children: [
               Container(
-                padding: EdgeInsets.fromLTRB(75, 100, 75, 100),
+                padding: EdgeInsets.fromLTRB(75, 260, 75, 170),
                 child: Form(
-                    child: Column(
-                  children: [
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 2.0, horizontal: 30.0),
-                      decoration: BoxDecoration(
-                        color: Color(0xFFedf0f8),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(30),
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 2.0, horizontal: 30.0),
+                        decoration: BoxDecoration(
+                          color: Color(0xFFedf0f8),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(30),
+                          ),
+                        ),
+                        child: TextFormField(
+                          controller: mailcontroller,
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Email',
+                              hintStyle: TextStyle(
+                                  color: Color(0xFFb2b7bf), fontSize: 18)),
                         ),
                       ),
-                      child: TextFormField(
-                        controller: mailcontroller,
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Email',
-                            hintStyle: TextStyle(
-                                color: Color(0xFFb2b7bf), fontSize: 18)),
+                      SizedBox(
+                        height: 30,
                       ),
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 2.0, horizontal: 30.0),
-                      decoration: BoxDecoration(
-                          color: Color(0xFFedf0f8),
-                          borderRadius: BorderRadius.circular(30.0)),
-                      child: TextFormField(
-                        controller: passwordController,
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Password',
-                            hintStyle: TextStyle(
-                                color: Color(0xFFb2b7bf), fontSize: 18)),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 2.0, horizontal: 30.0),
+                        decoration: BoxDecoration(
+                            color: Color(0xFFedf0f8),
+                            borderRadius: BorderRadius.circular(30.0)),
+                        child: TextFormField(
+                          controller: passwordController,
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'Password',
+                              hintStyle: TextStyle(
+                                  color: Color(0xFFb2b7bf), fontSize: 18)),
+                        ),
                       ),
-                    )
-                  ],
-                )),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            email = mailcontroller.text;
+                            password = passwordController.text;
+                          });
+                          signIn();
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 2.0, vertical: 18.0),
+                          decoration: BoxDecoration(
+                              color: Colors.blue[600],
+                              borderRadius: BorderRadius.circular(10.0)),
+                          child: Center(
+                            child: Text(
+                              'Sign In',
+                              style: GoogleFonts.getFont("Roboto Condensed",
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30.0,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Forgot()));
+                        },
+                        child: Text(
+                          'Forgot Password?',
+                          style: GoogleFonts.getFont('Roboto Condensed',
+                              fontWeight: FontWeight.w700, fontSize: 15),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        'Login with',
+                        style: GoogleFonts.getFont('Roboto Condensed',
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xFF273671)),
+                      ),
+                      SizedBox(
+                        height: 30.0,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              // signin
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 12, vertical: 8),
+                              decoration: BoxDecoration(
+                                color: Color(0xFFedF0F8),
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    'assets/images/google.png',
+                                    height: 30,
+                                    width: 25,
+                                  ),
+                                  SizedBox(width: 8),
+                                  Text(
+                                    'SignInWithSSO',
+                                    style: GoogleFonts.getFont(
+                                        'Roboto Condensed',
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 18),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              //sign with pple id
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 12, vertical: 8),
+                              decoration: BoxDecoration(
+                                color: Color(0xFFedF0F8),
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    'assets/images/apple.png',
+                                    height: 30,
+                                    width: 25,
+                                  ),
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+                                  Text(
+                                    'SignInWithAppleID',
+                                    style: GoogleFonts.getFont(
+                                        'Roboto Condensed',
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w700),
+                                  )
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "don't have an account ?",
+                            style: GoogleFonts.getFont('Roboto Condensed',
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF273671)),
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: ((context) => Signup())));
+                            },
+                            child: Text(
+                              'SignUP',
+                              style: GoogleFonts.getFont("Roboto Condensed",
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xFFedF0F8)),
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
               )
             ],
           )

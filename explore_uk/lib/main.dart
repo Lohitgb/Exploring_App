@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: title,
       theme: ThemeData(scaffoldBackgroundColor: Colors.amber[100]),
-      home: const SignIn(),
+      home: const LandingPage(),
     );
   }
 }
