@@ -1,11 +1,12 @@
 import 'dart:ui';
 
+// import 'package:explore_uk/pages/auth.dart';
 import 'package:explore_uk/pages/forgot.dart';
+import 'package:explore_uk/pages/home.dart';
 import 'package:explore_uk/pages/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignIn extends StatefulWidget {
@@ -22,7 +23,7 @@ class _SignInState extends State<SignIn> {
   TextEditingController passwordController = new TextEditingController();
 
   bool isloading = false;
-
+  final _formkey = GlobalKey<FormState>();
   signIn() async {
     setState(() {
       isloading = true;
@@ -31,9 +32,30 @@ class _SignInState extends State<SignIn> {
     try {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => HomePage()));
     } on FirebaseAuthException catch (e) {
-      Get.snackbar('Email nd password not matching !!', e.code,
-          snackPosition: SnackPosition.TOP);
+      if (e.code == 'User not found') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.orangeAccent,
+            content: Text(
+              'No user found that Email ',
+              style: TextStyle(fontSize: 18.0),
+            ),
+          ),
+        );
+      } else if (e.code == 'wrong-password') {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          backgroundColor: Colors.orangeAccent,
+          content: Text(
+            'Wrong password provided by user',
+            style: TextStyle(
+              fontSize: 18,
+            ),
+          ),
+        ));
+      }
     } catch (e) {
       Get.snackbar('error msg', e.toString());
     }
@@ -71,6 +93,7 @@ class _SignInState extends State<SignIn> {
               Container(
                 padding: EdgeInsets.fromLTRB(75, 260, 75, 170),
                 child: Form(
+                  key: _formkey,
                   child: Column(
                     children: [
                       Container(
@@ -83,6 +106,12 @@ class _SignInState extends State<SignIn> {
                           ),
                         ),
                         child: TextFormField(
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'please Enter Email';
+                            }
+                            return null;
+                          },
                           controller: mailcontroller,
                           decoration: InputDecoration(
                               border: InputBorder.none,
@@ -101,12 +130,19 @@ class _SignInState extends State<SignIn> {
                             color: Color(0xFFedf0f8),
                             borderRadius: BorderRadius.circular(30.0)),
                         child: TextFormField(
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'please enter password';
+                            }
+                            return null;
+                          },
                           controller: passwordController,
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Password',
                               hintStyle: TextStyle(
                                   color: Color(0xFFb2b7bf), fontSize: 18)),
+                          obscureText: true,
                         ),
                       ),
                       SizedBox(
@@ -114,10 +150,12 @@ class _SignInState extends State<SignIn> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          setState(() {
-                            email = mailcontroller.text;
-                            password = passwordController.text;
-                          });
+                          if (_formkey.currentState!.validate()) {
+                            setState(() {
+                              email = mailcontroller.text;
+                              password = passwordController.text;
+                            });
+                          }
                           signIn();
                         },
                         child: Container(
@@ -172,7 +210,7 @@ class _SignInState extends State<SignIn> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              // signin
+                              // AuthMethods().signInWithGoogle(context);
                             },
                             child: Container(
                               padding: EdgeInsets.symmetric(
@@ -211,7 +249,7 @@ class _SignInState extends State<SignIn> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              //sign with pple id
+                              // AuthMethods().signInWithApple();
                             },
                             child: Container(
                               padding: EdgeInsets.symmetric(
