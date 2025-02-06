@@ -98,19 +98,19 @@ class _SignupState extends State<Signup> {
                 color: Colors.white.withOpacity(0.1),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.all(50),
-              child: Container(
-                  // color: Colors.amberAccent,
-                  ),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.all(50),
+            //   child: Container(
+            //       // color: Colors.amberAccent,
+            //       ),
+            // ),
             SizedBox(
               height: 30.0,
             ),
             Column(
               children: [
                 Container(
-                    padding: EdgeInsets.fromLTRB(75, 260, 75, 170),
+                    padding: EdgeInsets.fromLTRB(50, 200, 50, 200),
                     child: Form(
                       key: _formKey,
                       child: Column(
@@ -176,10 +176,10 @@ class _SignupState extends State<Signup> {
                             child: Container(
                               width: MediaQuery.of(context).size.width,
                               padding: EdgeInsets.symmetric(
-                                  horizontal: 2.0, vertical: 12.0),
+                                  horizontal: 2.0, vertical: 10.0),
                               decoration: BoxDecoration(
                                   color: Colors.blue[600],
-                                  borderRadius: BorderRadius.circular(30.0)),
+                                  borderRadius: BorderRadius.circular(10.0)),
                               child: Center(
                                 child: Text(
                                   'Sign Up',
@@ -193,26 +193,38 @@ class _SignupState extends State<Signup> {
                           SizedBox(
                             height: 30.0,
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => SignIn()));
-                            },
-                            child: Text(
-                              'Already have an account? Sign In',
-                              style: GoogleFonts.getFont('Roboto Condensed',
-                                  color: Color(0xFFedF0F8),
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w700),
-                            ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Already have an account?',
+                                style: GoogleFonts.getFont('Roboto Condensed',
+                                    color: Color(0xFFedF0F8),
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w700),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SignIn()));
+                                },
+                                child: Text(
+                                  'Login',
+                                  style: GoogleFonts.getFont('Roboto Condensed',
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                              ),
+                            ],
                           ),
                           SizedBox(
                             height: 15,
-                          ),
-                          SizedBox(
-                            height: 30,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -238,7 +250,7 @@ class _SignupState extends State<Signup> {
                                       ),
                                       SizedBox(width: 8),
                                       Text(
-                                        'SignInWithSSO',
+                                        'SignUpWithGoogle',
                                         style: GoogleFonts.getFont(
                                             'Roboto Condensed',
                                             fontWeight: FontWeight.w700,

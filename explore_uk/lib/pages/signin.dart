@@ -79,19 +79,19 @@ class _SignInState extends State<SignIn> {
             filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
             child: Container(color: Colors.white.withOpacity(0.1)),
           ),
-          Padding(
-            padding: EdgeInsets.all(50),
-            // child: Container(
-            // color: Colors.amber,
-            // ),
-          ),
+          // Padding(
+          //   padding: EdgeInsets.all(50),
+          //   // child: Container(
+          //   // color: Colors.amber,
+          //   // ),
+          // ),
           SizedBox(
             height: 30,
           ),
           Column(
             children: [
               Container(
-                padding: EdgeInsets.fromLTRB(75, 260, 75, 170),
+                padding: EdgeInsets.fromLTRB(50, 200, 50, 200),
                 child: Form(
                   key: _formkey,
                   child: Column(
@@ -161,7 +161,7 @@ class _SignInState extends State<SignIn> {
                         child: Container(
                           width: MediaQuery.of(context).size.width,
                           padding: EdgeInsets.symmetric(
-                              horizontal: 2.0, vertical: 18.0),
+                              horizontal: 2.0, vertical: 10.0),
                           decoration: BoxDecoration(
                               color: Colors.blue[600],
                               borderRadius: BorderRadius.circular(10.0)),
@@ -177,7 +177,7 @@ class _SignInState extends State<SignIn> {
                         ),
                       ),
                       SizedBox(
-                        height: 30.0,
+                        height: 15,
                       ),
                       GestureDetector(
                         onTap: () {
@@ -203,7 +203,7 @@ class _SignInState extends State<SignIn> {
                             color: Color(0xFF273671)),
                       ),
                       SizedBox(
-                        height: 30.0,
+                        height: 15,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -229,7 +229,7 @@ class _SignInState extends State<SignIn> {
                                   ),
                                   SizedBox(width: 8),
                                   Text(
-                                    'SignInWithSSO',
+                                    'SignInWithGoogle',
                                     style: GoogleFonts.getFont(
                                         'Roboto Condensed',
                                         fontWeight: FontWeight.w700,
@@ -242,7 +242,7 @@ class _SignInState extends State<SignIn> {
                         ],
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 15,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -270,7 +270,7 @@ class _SignInState extends State<SignIn> {
                                     width: 8,
                                   ),
                                   Text(
-                                    'SignInWithAppleID',
+                                    'SignInWithApple',
                                     style: GoogleFonts.getFont(
                                         'Roboto Condensed',
                                         fontSize: 18,
@@ -283,16 +283,16 @@ class _SignInState extends State<SignIn> {
                         ],
                       ),
                       SizedBox(
-                        height: 40,
+                        height: 15,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "don't have an account ?",
+                            "don't have an account?",
                             style: GoogleFonts.getFont('Roboto Condensed',
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
                                 color: Color(0xFF273671)),
                           ),
                           SizedBox(
@@ -306,9 +306,9 @@ class _SignInState extends State<SignIn> {
                                       builder: ((context) => Signup())));
                             },
                             child: Text(
-                              'SignUP',
+                              'create',
                               style: GoogleFonts.getFont("Roboto Condensed",
-                                  fontSize: 20,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.w700,
                                   color: Color(0xFFedF0F8)),
                             ),
