@@ -1,7 +1,4 @@
-import 'package:explore_uk/pages/forgot.dart';
 import 'package:explore_uk/pages/landing_page.dart';
-import 'package:explore_uk/pages/signin.dart';
-import 'package:explore_uk/pages/signup.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';

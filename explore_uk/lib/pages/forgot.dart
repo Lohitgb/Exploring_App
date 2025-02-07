@@ -121,7 +121,7 @@ class _ForgotState extends State<Forgot> {
             children: [
               Container(
                 // color: Colors.pink,
-                padding: EdgeInsets.fromLTRB(50, 300, 50, 300),
+                padding: EdgeInsets.fromLTRB(50, 200, 50, 200),
                 child: Form(
                     child: Column(
                   children: [

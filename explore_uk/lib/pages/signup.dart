@@ -95,6 +95,7 @@ class _SignupState extends State<Signup> {
             BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
               child: Container(
+                // ignore: deprecated_member_use
                 color: Colors.white.withOpacity(0.1),
               ),
             ),
@@ -110,7 +111,7 @@ class _SignupState extends State<Signup> {
             Column(
               children: [
                 Container(
-                    padding: EdgeInsets.fromLTRB(50, 200, 50, 200),
+                    padding: EdgeInsets.fromLTRB(50, 100, 50, 100),
                     child: Form(
                       key: _formKey,
                       child: Column(
