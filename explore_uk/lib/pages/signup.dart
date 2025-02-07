@@ -89,7 +89,7 @@ class _SignupState extends State<Signup> {
           fit: StackFit.expand,
           children: [
             Image.asset(
-              'assets/images/forest.jpg',
+              'assets/images/vibhooti-falls.jpg',
               fit: BoxFit.cover,
             ),
             BackdropFilter(

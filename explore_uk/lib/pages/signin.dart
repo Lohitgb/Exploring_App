@@ -72,7 +72,7 @@ class _SignInState extends State<SignIn> {
         fit: StackFit.expand,
         children: [
           Image.asset(
-            'assets/images/forest.jpg',
+            'assets/images/vibhooti-falls.jpg',
             fit: BoxFit.cover,
           ),
           BackdropFilter(
