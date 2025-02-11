@@ -1,51 +1,3 @@
-// import 'package:explore_uk/pages/wrapper.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
-
-// class Signup extends StatefulWidget {
-//   const Signup({super.key});
-
-//   @override
-//   State<Signup> createState() => _SignupState();
-// }
-
-// class _SignupState extends State<Signup> {
-//   TextEditingController email = TextEditingController();
-//   TextEditingController password = TextEditingController();
-
-//   Signup() async {
-//     await FirebaseAuth.instance.createUserWithEmailAndPassword(
-//         email: email.text, password: password.text);
-//     Get.offAll(Wrapper());
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('signup'),
-//         backgroundColor: Colors.blue,
-//       ),
-//       body: Padding(
-//         padding: EdgeInsets.all(20),
-//         child: Column(children: [
-//           TextField(
-//             controller: email,
-//             decoration: InputDecoration(hintText: 'email'),
-//           ),
-//           TextField(
-//             controller: password,
-//             decoration: InputDecoration(hintText: 'password'),
-//           ),
-//           SizedBox(height: 15),
-//           ElevatedButton(onPressed: (() => Signup()), child: Text('signup'))
-//         ]),
-//       ),
-//     );
-//   }
-// }
-
 import 'dart:ui';
 
 import 'package:explore_uk/pages/signin.dart';
@@ -84,6 +36,7 @@ class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         body: Stack(
           fit: StackFit.expand,
@@ -111,7 +64,7 @@ class _SignupState extends State<Signup> {
             Column(
               children: [
                 Container(
-                    padding: EdgeInsets.fromLTRB(50, 100, 50, 100),
+                    padding: EdgeInsets.fromLTRB(50, 200, 50, 150),
                     child: Form(
                       key: _formKey,
                       child: Column(
@@ -200,7 +153,7 @@ class _SignupState extends State<Signup> {
                               Text(
                                 'Already have an account?',
                                 style: GoogleFonts.getFont('Roboto Condensed',
-                                    color: Color(0xFFedF0F8),
+                                    color: Color(0xFF273671),
                                     fontSize: 15,
                                     fontWeight: FontWeight.w700),
                               ),
@@ -217,7 +170,7 @@ class _SignupState extends State<Signup> {
                                 child: Text(
                                   'Login',
                                   style: GoogleFonts.getFont('Roboto Condensed',
-                                      color: Colors.white,
+                                      color: Color(0xFF273671),
                                       fontSize: 18,
                                       fontWeight: FontWeight.w700),
                                 ),

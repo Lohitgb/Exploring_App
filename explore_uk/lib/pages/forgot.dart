@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:explore_uk/pages/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Forgot extends StatefulWidget {
@@ -21,7 +23,13 @@ class _ForgotState extends State<Forgot> {
     setState(() {
       isloading = true;
     });
-    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+    await FirebaseAuth.instance
+        .sendPasswordResetEmail(email: email)
+        .then((Value) => {
+              Get.snackbar('Link Sent', 'A link has been sent to your email',
+                  backgroundColor: Colors.amber[100],
+                  margin: EdgeInsets.all(30)),
+            });
     setState(() {
       isloading = false;
     });
@@ -30,6 +38,7 @@ class _ForgotState extends State<Forgot> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -76,7 +85,7 @@ class _ForgotState extends State<Forgot> {
             children: [
               Container(
                 // color: Colors.pink,
-                padding: EdgeInsets.fromLTRB(50, 200, 50, 200),
+                padding: EdgeInsets.fromLTRB(50, 270, 50, 270),
                 child: Form(
                     child: Column(
                   children: [
@@ -141,7 +150,7 @@ class _ForgotState extends State<Forgot> {
                           style: GoogleFonts.getFont('Roboto Condensed',
                               fontSize: 15,
                               fontWeight: FontWeight.w700,
-                              color: Colors.white),
+                              color: Colors.black),
                         ),
                         SizedBox(width: 5.0),
                         GestureDetector(
@@ -154,7 +163,7 @@ class _ForgotState extends State<Forgot> {
                           child: Text(
                             'create',
                             style: GoogleFonts.getFont('Roboto Condensed',
-                                color: Colors.white,
+                                color: Colors.black,
                                 fontSize: 18,
                                 fontWeight: FontWeight.w700),
                           ),

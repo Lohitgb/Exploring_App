@@ -67,6 +67,7 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color.fromARGB(255, 165, 241, 168),
       body: Stack(
         fit: StackFit.expand,
@@ -92,7 +93,7 @@ class _SignInState extends State<SignIn> {
           Column(
             children: [
               Container(
-                padding: EdgeInsets.fromLTRB(50, 100, 50, 100),
+                padding: EdgeInsets.fromLTRB(50, 160, 50, 150),
                 child: Form(
                   key: _formkey,
                   child: Column(
@@ -311,7 +312,7 @@ class _SignInState extends State<SignIn> {
                               style: GoogleFonts.getFont("Roboto Condensed",
                                   fontSize: 18,
                                   fontWeight: FontWeight.w700,
-                                  color: Color(0xFFedF0F8)),
+                                  color: Color(0xFF273671)),
                             ),
                           )
                         ],
