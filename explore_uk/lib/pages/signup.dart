@@ -145,40 +145,7 @@ class _SignupState extends State<Signup> {
                             ),
                           ),
                           SizedBox(
-                            height: 30.0,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Already have an account?',
-                                style: GoogleFonts.getFont('Roboto Condensed',
-                                    color: Color(0xFF273671),
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w700),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => SignIn()));
-                                },
-                                child: Text(
-                                  'Login',
-                                  style: GoogleFonts.getFont('Roboto Condensed',
-                                      color: Color(0xFF273671),
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 15,
+                            height: 25,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -214,49 +181,83 @@ class _SignupState extends State<Signup> {
                                   ),
                                 ),
                               ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      //AuthMethods().signInMethods(conetxt);
+                                    },
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: 8, horizontal: 12),
+                                      decoration: BoxDecoration(
+                                          color: Color(0xFFedF0F8),
+                                          borderRadius:
+                                              BorderRadius.circular(30.0)),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            'assets/images/apple.png',
+                                            height: 30,
+                                            width: 25,
+                                          ),
+                                          SizedBox(
+                                            width: 8,
+                                          ),
+                                          Text(
+                                            'SignUpWithApple',
+                                            style: GoogleFonts.getFont(
+                                                'Roboto Condensed',
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w700),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ],
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 15.0,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              Text(
+                                'Already have an account?',
+                                style: GoogleFonts.getFont('Roboto Condensed',
+                                    color: Color(0xFF273671),
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w700),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
                               GestureDetector(
                                 onTap: () {
-                                  //AuthMethods().signInMethods(conetxt);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SignIn()));
                                 },
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 8, horizontal: 12),
-                                  decoration: BoxDecoration(
-                                      color: Color(0xFFedF0F8),
-                                      borderRadius:
-                                          BorderRadius.circular(30.0)),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Image.asset(
-                                        'assets/images/apple.png',
-                                        height: 30,
-                                        width: 25,
-                                      ),
-                                      SizedBox(
-                                        width: 8,
-                                      ),
-                                      Text(
-                                        'SignUpWithApple',
-                                        style: GoogleFonts.getFont(
-                                            'Roboto Condensed',
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w700),
-                                      )
-                                    ],
-                                  ),
+                                child: Text(
+                                  'Login',
+                                  style: GoogleFonts.getFont('Roboto Condensed',
+                                      color: Color(0xFF273671),
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w700),
                                 ),
-                              )
+                              ),
                             ],
-                          )
+                          ),
                         ],
                       ),
                     ))

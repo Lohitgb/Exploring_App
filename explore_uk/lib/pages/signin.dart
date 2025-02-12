@@ -241,47 +241,47 @@ class _SignInState extends State<SignIn> {
                               ),
                             ),
                           ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              // AuthMethods().signInWithApple();
-                            },
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 12, vertical: 8),
-                              decoration: BoxDecoration(
-                                color: Color(0xFFedF0F8),
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset(
-                                    'assets/images/apple.png',
-                                    height: 30,
-                                    width: 25,
+                          SizedBox(
+                            width: 15,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  // AuthMethods().signInWithApple();
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 12, vertical: 8),
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFedF0F8),
+                                    borderRadius: BorderRadius.circular(30),
                                   ),
-                                  SizedBox(
-                                    width: 8,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/apple.png',
+                                        height: 30,
+                                        width: 25,
+                                      ),
+                                      SizedBox(
+                                        width: 8,
+                                      ),
+                                      Text(
+                                        'SignInWithApple',
+                                        style: GoogleFonts.getFont(
+                                            'Roboto Condensed',
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w700),
+                                      )
+                                    ],
                                   ),
-                                  Text(
-                                    'SignInWithApple',
-                                    style: GoogleFonts.getFont(
-                                        'Roboto Condensed',
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w700),
-                                  )
-                                ],
-                              ),
-                            ),
-                          )
+                                ),
+                              )
+                            ],
+                          ),
                         ],
                       ),
                       SizedBox(
