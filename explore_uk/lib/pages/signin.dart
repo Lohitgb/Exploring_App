@@ -229,14 +229,14 @@ class _SignInState extends State<SignIn> {
                                     height: 30,
                                     width: 25,
                                   ),
-                                  SizedBox(width: 8),
-                                  Text(
-                                    'SignInWithGoogle',
-                                    style: GoogleFonts.getFont(
-                                        'Roboto Condensed',
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 18),
-                                  )
+                                  // SizedBox(width: 8),
+                                  // Text(
+                                  //   'SignInWithGoogle',
+                                  //   style: GoogleFonts.getFont(
+                                  //       'Roboto Condensed',
+                                  //       fontWeight: FontWeight.w700,
+                                  //       fontSize: 18),
+                                  // )
                                 ],
                               ),
                             ),
@@ -266,15 +266,43 @@ class _SignInState extends State<SignIn> {
                                         height: 30,
                                         width: 25,
                                       ),
-                                      SizedBox(
-                                        width: 8,
-                                      ),
-                                      Text(
-                                        'SignInWithApple',
-                                        style: GoogleFonts.getFont(
-                                            'Roboto Condensed',
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w700),
+                                      // SizedBox(
+                                      //   width: 8,
+                                      // ),
+                                      // Text(
+                                      //   'SignInWithApple',
+                                      //   style: GoogleFonts.getFont(
+                                      //       'Roboto Condensed',
+                                      //       fontSize: 18,
+                                      //       fontWeight: FontWeight.w700),
+                                      // )
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(width: 15),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  //####
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 12, vertical: 8),
+                                  decoration: BoxDecoration(
+                                      color: Color(0xFFedF0F8),
+                                      borderRadius: BorderRadius.circular(30)),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/insta.jpg',
+                                        height: 30,
+                                        width: 25,
                                       )
                                     ],
                                   ),

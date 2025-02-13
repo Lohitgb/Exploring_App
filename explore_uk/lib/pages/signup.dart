@@ -169,14 +169,14 @@ class _SignupState extends State<Signup> {
                                         height: 30,
                                         width: 25,
                                       ),
-                                      SizedBox(width: 8),
-                                      Text(
-                                        'SignUpWithGoogle',
-                                        style: GoogleFonts.getFont(
-                                            'Roboto Condensed',
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 18),
-                                      )
+                                      // SizedBox(width: 8),
+                                      // Text(
+                                      //   'SignUpWithGoogle',
+                                      //   style: GoogleFonts.getFont(
+                                      //       'Roboto Condensed',
+                                      //       fontWeight: FontWeight.w700,
+                                      //       fontSize: 18),
+                                      // )
                                     ],
                                   ),
                                 ),
@@ -207,22 +207,52 @@ class _SignupState extends State<Signup> {
                                             height: 30,
                                             width: 25,
                                           ),
-                                          SizedBox(
-                                            width: 8,
-                                          ),
-                                          Text(
-                                            'SignUpWithApple',
-                                            style: GoogleFonts.getFont(
-                                                'Roboto Condensed',
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w700),
-                                          )
+                                          // SizedBox(
+                                          //   width: 8,
+                                          // ),
+                                          // Text(
+                                          //   'SignUpWithApple',
+                                          //   style: GoogleFonts.getFont(
+                                          //       'Roboto Condensed',
+                                          //       fontSize: 18,
+                                          //       fontWeight: FontWeight.w700),
+                                          // )
                                         ],
                                       ),
                                     ),
                                   )
                                 ],
                               ),
+                              SizedBox(width: 15),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      //insta
+                                    },
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: 8, horizontal: 12),
+                                      decoration: BoxDecoration(
+                                          color: Color(0xFFedF0F8),
+                                          borderRadius:
+                                              BorderRadius.circular(30)),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            'assets/images/insta.jpg',
+                                            height: 30,
+                                            width: 25,
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              )
                             ],
                           ),
                           SizedBox(

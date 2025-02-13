@@ -1,7 +1,11 @@
+import 'dart:ui';
+
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:explore_uk/pages/hovercard.dart';
 import 'package:explore_uk/pages/signin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,6 +18,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser;
 
+//logout function code
   Future<void> signout() async {
     await FirebaseAuth.instance.signOut();
     if (mounted) {
@@ -25,7 +30,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   int selectedIndex = 0;
-
+// navigation bar button function for logout
   void onItemTapped(int index) {
     if (index == 3) {
       signout();
@@ -36,6 +41,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+// widget created for carousal bar
   Widget _carousalImage(String imagePath) {
     return Container(
       margin: EdgeInsets.all(6.0),
@@ -49,6 +55,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: false,
@@ -98,7 +105,11 @@ class _HomePageState extends State<HomePage> {
                 options: CarouselOptions(
                     height: 180.0, enlargeCenterPage: true, autoPlay: true))
           ],
-        )
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        GlassHover(),
       ]),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
