@@ -1,129 +1,191 @@
-import 'dart:ui';
-
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:explore_uk/pages/hovercard.dart';
-import 'package:explore_uk/pages/signin.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomePage> createState() => _Homepage1State();
 }
 
-class _HomePageState extends State<HomePage> {
-  final user = FirebaseAuth.instance.currentUser;
+class _Homepage1State extends State<HomePage> {
+  final List<Map<String, String>> places = [
+    {'image': 'assets/images/magod.jpg', 'name': 'Kumta'},
+    {'image': 'assets/images/sathodi.jpg', 'name': 'karwar'},
+    {'image': 'assets/images/sathodi1.jpg', 'name': 'ankola'},
+    {'image': 'assets/images/yana1.jpg', 'name': 'Kumta'},
+    {'image': 'assets/images/tagore.jpg', 'name': 'Kumta'},
+    {'image': 'assets/images/yana2.jpg', 'name': 'Kumta'}
+  ];
 
-//logout function code
-  Future<void> signout() async {
-    await FirebaseAuth.instance.signOut();
-    if (mounted) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const SignIn()),
-      );
-    }
-  }
-
-  int selectedIndex = 0;
-// navigation bar button function for logout
-  void onItemTapped(int index) {
-    if (index == 3) {
-      signout();
-    } else {
-      setState(() {
-        selectedIndex = index;
-      });
-    }
-  }
-
-// widget created for carousal bar
-  Widget _carousalImage(String imagePath) {
-    return Container(
-      margin: EdgeInsets.all(6.0),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(6.0),
-          image:
-              DecorationImage(image: AssetImage(imagePath), fit: BoxFit.cover)),
-    );
-  }
+  final listPlaces = [
+    'best  places',
+    'most visted',
+    'hiking',
+    'treking',
+    'beaches'
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        centerTitle: false,
-        backgroundColor: Color(0xFF00BF6D),
-        foregroundColor: Colors.white,
-        elevation: 0,
-        title: Text(
-          'Explore Places',
-          style: GoogleFonts.getFont('Roboto Condensed',
-              fontSize: 22, fontWeight: FontWeight.bold),
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: Color(0xFF00BF6D),
+          foregroundColor: Colors.white,
+          elevation: 0,
+          title: Text(
+            'Explore Places',
+            style: GoogleFonts.getFont('Roboto Condensed',
+                fontSize: 22, fontWeight: FontWeight.bold),
+          ),
         ),
-      ),
-      body: Column(children: [
-        Container(
-          padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
-          color: Color(0xFF00BF6D),
-          child: Form(
-              child: TextFormField(
-            autofocus: true,
-            textInputAction: TextInputAction.search,
-            onChanged: (value) {},
-            decoration: InputDecoration(
-              hintText: 'Search',
-              hintStyle: TextStyle(
-                // ignore: deprecated_member_use
-                color: Color(0xFF1D1D35).withOpacity(0.64),
+        body: SafeArea(
+          // child: Padding(
+          // padding: EdgeInsets.all(5),
+          child: SingleChildScrollView(
+            child: Column(children: [
+              Container(
+                padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
+                color: Color(0xFF00BF6D),
+                child: Form(
+                    child: TextFormField(
+                  autofocus: true,
+                  textInputAction: TextInputAction.search,
+                  onChanged: (value) {},
+                  decoration: InputDecoration(
+                    hintText: 'Search',
+                    hintStyle: TextStyle(
+                      // ignore: deprecated_member_use
+                      color: Color(0xFF1D1D35).withOpacity(0.64),
+                    ),
+                    filled: true,
+                    contentPadding: EdgeInsets.symmetric(
+                        horizontal: 16.0 * 1.5, vertical: 12.0),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(50.0)),
+                  ),
+                )),
               ),
-              filled: true,
-              contentPadding:
-                  EdgeInsets.symmetric(horizontal: 16.0 * 1.5, vertical: 12.0),
-              border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(50.0)),
-            ),
-          )),
-        ),
-        SizedBox(height: 5),
-        Column(
-          children: [
-            CarouselSlider(
-                items: [
-                  _carousalImage('assets/images/yana-745780.jpg'),
-                  _carousalImage('assets/images/magod.jpg'),
-                  _carousalImage('assets/images/sathodi1.jpg'),
-                  _carousalImage('assets/images/forest.jpg')
-                ],
-                options: CarouselOptions(
-                    height: 180.0, enlargeCenterPage: true, autoPlay: true))
-          ],
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        GlassHover(),
-      ]),
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'profile'),
-          BottomNavigationBarItem(icon: Icon(Icons.map), label: 'map'),
-          BottomNavigationBarItem(icon: Icon(Icons.logout), label: 'logout'),
-        ],
-        backgroundColor: Color(0xFF00BF6D),
-        type: BottomNavigationBarType.fixed,
-        currentIndex: selectedIndex,
-        selectedItemColor: Colors.white,
-        onTap: onItemTapped,
-      ),
-    );
+              SizedBox(
+                height: 10,
+              ),
+              Row(children: [
+                Expanded(
+                  child: Container(
+                    height: 200,
+                    child: ListView.builder(
+                      itemCount: places.length,
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemBuilder: (BuildContext context, int index) {
+                        return InkWell(
+                          onTap: () {},
+                          child: Container(
+                            width: 165,
+                            padding: EdgeInsets.all(20),
+                            margin: EdgeInsets.only(left: 5, right: 5),
+                            decoration: BoxDecoration(
+                                color: Colors.black,
+                                borderRadius: BorderRadius.circular(15),
+                                image: DecorationImage(
+                                    image: AssetImage(places[index]['image']!),
+                                    fit: BoxFit.cover,
+                                    opacity: 0.7)),
+                            child: Column(
+                              children: [
+                                Container(
+                                  alignment: Alignment.topRight,
+                                  child: Icon(
+                                    Icons.bookmark_border_outlined,
+                                    color: Colors.white,
+                                    size: 25,
+                                  ),
+                                ),
+                                Spacer(),
+                                Container(
+                                  alignment: Alignment.bottomLeft,
+                                  child: Text(
+                                    places[index]['name']!,
+                                    style: GoogleFonts.getFont(
+                                        'Roboto Condensed',
+                                        fontSize: 18,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ]),
+              SizedBox(
+                height: 20,
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Padding(
+                  padding: EdgeInsets.all(8),
+                  child: Row(
+                    children: [
+                      for (int i = 0; i < 5; i++)
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(color: Colors.black26, blurRadius: 4)
+                              ]),
+                          child: Text(
+                            listPlaces[i],
+                            style: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w500),
+                          ),
+                        )
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                height: places.length * 230,
+                child: ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: places.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                      padding: EdgeInsets.all(15),
+                      child: InkWell(
+                        onTap: () {},
+                        child: Container(
+                          height: 200,
+                          decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(15),
+                            image: DecorationImage(
+                                image: AssetImage(places[index]['image']!),
+                                fit: BoxFit.cover,
+                                opacity: 0.8),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ]),
+          ),
+        ));
+    // );
   }
 }

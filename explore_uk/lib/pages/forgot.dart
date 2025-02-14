@@ -52,31 +52,6 @@ class _ForgotState extends State<Forgot> {
               color: Colors.white.withOpacity(0.1),
             ),
           ),
-
-          //text heading code
-
-          // Column(
-          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //   crossAxisAlignment: CrossAxisAlignment.start,
-          //   children: [
-          //     Align(
-          //       alignment: Alignment.center,
-          //       child: Text(
-          //         'hello',
-          //         style: TextStyle(fontSize: 52, color: Colors.amber),
-          //       ),
-          //     )
-          //   ],
-          // ),
-
-          // old code for padding
-
-          // Padding(
-          // padding: EdgeInsets.fromLTRB(75, 150, 75, 150),
-          // child: Container(
-          // color: Colors.amberAccent,
-          // ),
-          // ),
           SizedBox(
             height: 30,
           ),
