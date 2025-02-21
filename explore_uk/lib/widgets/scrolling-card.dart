@@ -25,7 +25,7 @@ class _ScrollongCardState extends State<ScrollongCard> {
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
                     itemBuilder: (BuildContext context, int index) {
-                      InkWell(
+                      return InkWell(
                         onTap: () {},
                         child: Container(
                           width: 160,
