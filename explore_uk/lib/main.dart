@@ -1,7 +1,4 @@
-import 'package:explore_uk/pages/home.dart';
-
 import 'package:explore_uk/pages/landing_page.dart';
-import 'package:explore_uk/widgets/postscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -31,7 +28,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: title,
       theme: ThemeData(scaffoldBackgroundColor: Colors.amber[100]),
-      home: const PostScreen(),
+      home: const LandingPage(),
     );
   }
 }

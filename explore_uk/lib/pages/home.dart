@@ -1,7 +1,6 @@
 import 'package:explore_uk/widgets/bottombar.dart';
 import 'package:explore_uk/widgets/postscreen.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
