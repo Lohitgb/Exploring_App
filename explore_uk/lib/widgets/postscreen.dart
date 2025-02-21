@@ -23,7 +23,7 @@ class _PostscreenState extends State<PostScreen> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: PreferredSize(
-            preferredSize: Size.fromHeight(90), child: CardAppBar()),
+            preferredSize: Size.fromHeight(115), child: CardAppBar()),
         bottomNavigationBar: PostBottomBar(),
       ),
     );

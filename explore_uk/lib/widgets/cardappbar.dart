@@ -22,7 +22,7 @@ class _CardAppBarState extends State<CardAppBar> {
               Navigator.pop(context);
             },
             child: Container(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(9),
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(15),
