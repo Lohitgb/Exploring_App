@@ -1,5 +1,8 @@
 import 'package:explore_uk/widgets/bottombar.dart';
-import 'package:explore_uk/widgets/postscreen.dart';
+import 'package:explore_uk/widgets/pages/karwar.dart';
+import 'package:explore_uk/widgets/pages/kumta.dart';
+import 'package:explore_uk/widgets/pages/magod.dart';
+import 'package:explore_uk/widgets/pages/yana.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,9 +16,9 @@ class HomePage extends StatefulWidget {
 class _Homepage1State extends State<HomePage> {
   final List<Map<String, String>> places = [
     {'image': 'assets/images/magod.jpg', 'name': 'Kumta'},
-    {'image': 'assets/images/sathodi.jpg', 'name': 'karwar'},
-    {'image': 'assets/images/sathodi1.jpg', 'name': 'ankola'},
-    {'image': 'assets/images/yana1.jpg', 'name': 'Kumta'},
+    {'image': 'assets/images/sathodi.jpg', 'name': 'Karwar'},
+    {'image': 'assets/images/sathodi1.jpg', 'name': 'Magod'},
+    {'image': 'assets/images/yana1.jpg', 'name': 'Yana'},
     {'image': 'assets/images/tagore.jpg', 'name': 'Kumta'},
     {'image': 'assets/images/yana2.jpg', 'name': 'Kumta'}
   ];
@@ -28,6 +31,14 @@ class _Homepage1State extends State<HomePage> {
     'beaches'
   ];
 
+  // Mapping places to their respective pages
+  final Map<String, Widget> placePages = {
+    'Kumta': Kumta(),
+    'Magod': MagodPage(),
+    'Yana': Yana(),
+    'Karwar': KarwarPage(),
+    // 'Ankola': AnkolaPage(),
+  };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,10 +96,15 @@ class _Homepage1State extends State<HomePage> {
                     itemBuilder: (BuildContext context, int index) {
                       return InkWell(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => PostScreen()));
+                          // String placeName = places[index]['name']!;
+                          // Widget destinationPage = placePages[placeName] ??
+                          //     Kumta(); // Default to KumtaPage
+
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //       builder: (context) => destinationPage),
+                          // );
                         },
                         child: Container(
                           width: 165,
@@ -175,11 +191,34 @@ class _Homepage1State extends State<HomePage> {
                       children: [
                         InkWell(
                           onTap: () {
+                            String placeName = places[index]['name']!;
+                            Widget destinationPage = placePages[placeName] ??
+                                Kumta(); // Default to KumtaPage
+
                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => PostScreen()));
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => destinationPage),
+                            );
                           },
+                          // onTap: () {
+                          //   Navigator.push(
+                          //       context,
+                          //       MaterialPageRoute(
+                          //           builder: (context) => Yana()));
+                          // },
+                          // onTap: () {
+                          //   Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //       builder: (context) => PostScreen(
+                          //         image: places[index]['image']!,
+                          //         name: places[index]['name']!,
+                          //       ),
+                          //     ),
+                          //   );
+                          // },
+
                           child: Container(
                             height: 200,
                             decoration: BoxDecoration(
@@ -198,7 +237,7 @@ class _Homepage1State extends State<HomePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'city name',
+                                places[index]['name']!,
                                 style: GoogleFonts.getFont('Roboto Condensed',
                                     fontSize: 20, fontWeight: FontWeight.w600),
                               ),
