@@ -1,27 +1,27 @@
 import 'package:explore_uk/widgets/pages/widgets/cardappbar.dart';
-import 'package:explore_uk/widgets/pages/widgets/karwar_bottom.dart';
+import 'package:explore_uk/widgets/pages/widgets/honnavar_bottom.dart';
 import 'package:flutter/material.dart';
 
-class KarwarPage extends StatefulWidget {
-  const KarwarPage({super.key});
+class HonnavrPage extends StatefulWidget {
+  const HonnavrPage({super.key});
 
   @override
-  State<KarwarPage> createState() => _KarwarPageState();
+  State<HonnavrPage> createState() => _HonnavrPageState();
 }
 
-class _KarwarPageState extends State<KarwarPage> {
+class _HonnavrPageState extends State<HonnavrPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/images/tagore.jpg'),
+              image: AssetImage('assets/images/honnavr.jpg'),
               fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(115), child: CardAppBar()),
-        bottomNavigationBar: KarwarBottom(),
+        bottomNavigationBar: HonnavarBottom(),
       ),
     );
   }

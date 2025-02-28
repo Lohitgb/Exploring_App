@@ -1,5 +1,5 @@
 import 'package:explore_uk/widgets/pages/widgets/cardappbar.dart';
-import 'package:explore_uk/widgets/pages/widgets/post_bottom_bar.dart';
+import 'package:explore_uk/widgets/pages/widgets/magod_bottom.dart';
 import 'package:flutter/material.dart';
 
 class MagodPage extends StatefulWidget {
@@ -22,7 +22,7 @@ class _MagodPageState extends State<MagodPage> {
           backgroundColor: Colors.transparent,
           appBar: PreferredSize(
               preferredSize: Size.fromHeight(115), child: CardAppBar()),
-          bottomNavigationBar: PostBottomBar(),
+          bottomNavigationBar: MagodBottom(),
         ));
   }
 }

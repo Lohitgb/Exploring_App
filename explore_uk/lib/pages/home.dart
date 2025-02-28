@@ -1,7 +1,9 @@
 import 'package:explore_uk/widgets/bottombar.dart';
+import 'package:explore_uk/widgets/pages/honnavr.dart';
 import 'package:explore_uk/widgets/pages/karwar.dart';
 import 'package:explore_uk/widgets/pages/kumta.dart';
 import 'package:explore_uk/widgets/pages/magod.dart';
+import 'package:explore_uk/widgets/pages/murdeshwar.dart';
 import 'package:explore_uk/widgets/pages/yana.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,12 +17,12 @@ class HomePage extends StatefulWidget {
 
 class _Homepage1State extends State<HomePage> {
   final List<Map<String, String>> places = [
+    {'image': 'assets/images/honnavr.jpg', 'name': 'Honnavar'},
+    {'image': 'assets/images/sathodi1.jpg', 'name': 'Magod'},
     {'image': 'assets/images/magod.jpg', 'name': 'Kumta'},
     {'image': 'assets/images/sathodi.jpg', 'name': 'Karwar'},
-    {'image': 'assets/images/sathodi1.jpg', 'name': 'Magod'},
     {'image': 'assets/images/yana1.jpg', 'name': 'Yana'},
-    {'image': 'assets/images/tagore.jpg', 'name': 'Kumta'},
-    {'image': 'assets/images/yana2.jpg', 'name': 'Kumta'}
+    {'image': 'assets/images/mur.jpg', 'name': 'Murdeshwar'},
   ];
 
   final listPlaces = [
@@ -37,6 +39,8 @@ class _Homepage1State extends State<HomePage> {
     'Magod': MagodPage(),
     'Yana': Yana(),
     'Karwar': KarwarPage(),
+    'Murdeshwar': MurdeshwarPgae(),
+    'Honnavar': HonnavrPage(),
     // 'Ankola': AnkolaPage(),
   };
   @override
@@ -179,95 +183,93 @@ class _Homepage1State extends State<HomePage> {
             SizedBox(
               height: 10,
             ),
-            SizedBox(
-              height: places.length * 230,
-              child: ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: places.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: EdgeInsets.all(15),
-                    child: Column(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            String placeName = places[index]['name']!;
-                            Widget destinationPage = placePages[placeName] ??
-                                Kumta(); // Default to KumtaPage
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: places.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding: EdgeInsets.all(15),
+                  child: Column(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          String placeName = places[index]['name']!;
+                          Widget destinationPage = placePages[placeName] ??
+                              Kumta(); // Default to KumtaPage
 
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => destinationPage),
-                            );
-                          },
-                          // onTap: () {
-                          //   Navigator.push(
-                          //       context,
-                          //       MaterialPageRoute(
-                          //           builder: (context) => Yana()));
-                          // },
-                          // onTap: () {
-                          //   Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (context) => PostScreen(
-                          //         image: places[index]['image']!,
-                          //         name: places[index]['name']!,
-                          //       ),
-                          //     ),
-                          //   );
-                          // },
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => destinationPage),
+                          );
+                        },
+                        // onTap: () {
+                        //   Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //           builder: (context) => Yana()));
+                        // },
+                        // onTap: () {
+                        //   Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //       builder: (context) => PostScreen(
+                        //         image: places[index]['image']!,
+                        //         name: places[index]['name']!,
+                        //       ),
+                        //     ),
+                        //   );
+                        // },
 
-                          child: Container(
-                            height: 200,
-                            decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(15),
-                              image: DecorationImage(
-                                  image: AssetImage(places[index]['image']!),
-                                  fit: BoxFit.cover,
-                                  opacity: 0.8),
-                            ),
+                        child: Container(
+                          height: 200,
+                          decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(15),
+                            image: DecorationImage(
+                                image: AssetImage(places[index]['image']!),
+                                fit: BoxFit.cover,
+                                opacity: 0.8),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                places[index]['name']!,
-                                style: GoogleFonts.getFont('Roboto Condensed',
-                                    fontSize: 20, fontWeight: FontWeight.w600),
-                              ),
-                              Icon(
-                                Icons.more_vert,
-                                size: 25,
-                              )
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Row(
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Icon(
-                              Icons.star,
-                              color: Colors.amber,
-                            ),
                             Text(
-                              '4.3 ',
-                              style: TextStyle(fontWeight: FontWeight.w600),
+                              places[index]['name']!,
+                              style: GoogleFonts.getFont('Roboto Condensed',
+                                  fontSize: 20, fontWeight: FontWeight.w600),
+                            ),
+                            Icon(
+                              Icons.more_vert,
+                              size: 25,
                             )
                           ],
-                        )
-                      ],
-                    ),
-                  );
-                },
-              ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                          ),
+                          Text(
+                            '4.3 ',
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                );
+              },
             ),
           ]),
         ),
