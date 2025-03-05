@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({super.key, required int selectedIndex});
 
   @override
   State<HomePage> createState() => _Homepage1State();
@@ -43,6 +43,7 @@ class _Homepage1State extends State<HomePage> {
     'Honnavar': HonnavrPage(),
     // 'Ankola': AnkolaPage(),
   };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -274,7 +275,9 @@ class _Homepage1State extends State<HomePage> {
           ]),
         ),
       ),
-      bottomNavigationBar: BottomBar(),
+      bottomNavigationBar: BottomBar(
+        selectedIndex: 2,
+      ),
     );
 
     // );

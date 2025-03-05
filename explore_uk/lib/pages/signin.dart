@@ -33,7 +33,11 @@ class _SignInState extends State<SignIn> {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
+          context,
+          MaterialPageRoute(
+              builder: (context) => HomePage(
+                    selectedIndex: 2,
+                  )));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'User not found') {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -68,7 +72,9 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: const Color.fromARGB(255, 165, 241, 168),
+      backgroundColor: Colors.white,
+      // resizeToAvoidBottomInset: false,
+      // backgroundColor: const Color.fromARGB(255, 165, 241, 145),
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -93,7 +99,7 @@ class _SignInState extends State<SignIn> {
           Column(
             children: [
               Container(
-                padding: EdgeInsets.fromLTRB(50, 160, 50, 150),
+                padding: EdgeInsets.fromLTRB(50, 200, 50, 150),
                 child: Form(
                   key: _formkey,
                   child: Column(
