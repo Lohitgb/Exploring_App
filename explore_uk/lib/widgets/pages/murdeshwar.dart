@@ -2,14 +2,14 @@ import 'package:explore_uk/widgets/pages/widgets/cardappbar.dart';
 import 'package:explore_uk/widgets/pages/widgets/murdeshwar_bottom.dart';
 import 'package:flutter/material.dart';
 
-class MurdeshwarPgae extends StatefulWidget {
-  const MurdeshwarPgae({super.key});
+class MurdeshwarPage extends StatefulWidget {
+  const MurdeshwarPage({super.key});
 
   @override
-  State<MurdeshwarPgae> createState() => _MurdeshwarPgaeState();
+  State<MurdeshwarPage> createState() => MurdeshwarPageState();
 }
 
-class _MurdeshwarPgaeState extends State<MurdeshwarPgae> {
+class MurdeshwarPageState extends State<MurdeshwarPage> {
   @override
   Widget build(BuildContext context) {
     return Container(

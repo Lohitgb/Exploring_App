@@ -26,10 +26,10 @@ class _Homepage1State extends State<HomePage> {
   ];
 
   final listPlaces = [
-    'best  places',
-    'most visted',
+    'best places',
+    'most visited',
     'hiking',
-    'treking',
+    'trekking',
     'beaches'
   ];
 
@@ -39,10 +39,30 @@ class _Homepage1State extends State<HomePage> {
     'Magod': MagodPage(),
     'Yana': Yana(),
     'Karwar': KarwarPage(),
-    'Murdeshwar': MurdeshwarPgae(),
+    'Murdeshwar': MurdeshwarPage(),
     'Honnavar': HonnavrPage(),
-    // 'Ankola': AnkolaPage(),
   };
+
+  List<Map<String, String>> filteredPlaces = [];
+
+  @override
+  void initState() {
+    super.initState();
+    filteredPlaces = List.from(places);
+  }
+
+  void filterSearch(String query) {
+    setState(() {
+      if (query.isEmpty) {
+        filteredPlaces = List.from(places);
+      } else {
+        filteredPlaces = places
+            .where((place) =>
+                place['name']!.toLowerCase().contains(query.toLowerCase()))
+            .toList();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,8 +80,6 @@ class _Homepage1State extends State<HomePage> {
         ),
       ),
       body: SafeArea(
-        // child: Padding(
-        // padding: EdgeInsets.all(5),
         child: SingleChildScrollView(
           child: Column(children: [
             Container(
@@ -71,11 +89,10 @@ class _Homepage1State extends State<HomePage> {
                   child: TextFormField(
                 autofocus: true,
                 textInputAction: TextInputAction.search,
-                onChanged: (value) {},
+                onChanged: (value) => filterSearch(value),
                 decoration: InputDecoration(
                   hintText: 'Search',
                   hintStyle: TextStyle(
-                    // ignore: deprecated_member_use
                     color: Color(0xFF1D1D35).withOpacity(0.64),
                   ),
                   filled: true,
@@ -87,9 +104,7 @@ class _Homepage1State extends State<HomePage> {
                 ),
               )),
             ),
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: 10),
             Row(children: [
               Expanded(
                 child: Container(
@@ -100,17 +115,7 @@ class _Homepage1State extends State<HomePage> {
                     shrinkWrap: true,
                     itemBuilder: (BuildContext context, int index) {
                       return InkWell(
-                        onTap: () {
-                          // String placeName = places[index]['name']!;
-                          // Widget destinationPage = placePages[placeName] ??
-                          //     Kumta(); // Default to KumtaPage
-
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //       builder: (context) => destinationPage),
-                          // );
-                        },
+                        onTap: () {},
                         child: Container(
                           width: 165,
                           padding: EdgeInsets.all(20),
@@ -152,9 +157,7 @@ class _Homepage1State extends State<HomePage> {
                 ),
               ),
             ]),
-            SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Padding(
@@ -181,13 +184,11 @@ class _Homepage1State extends State<HomePage> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: 10),
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: places.length,
+              itemCount: filteredPlaces.length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                   padding: EdgeInsets.all(15),
@@ -195,9 +196,9 @@ class _Homepage1State extends State<HomePage> {
                     children: [
                       InkWell(
                         onTap: () {
-                          String placeName = places[index]['name']!;
-                          Widget destinationPage = placePages[placeName] ??
-                              Kumta(); // Default to KumtaPage
+                          String placeName = filteredPlaces[index]['name']!;
+                          Widget destinationPage =
+                              placePages[placeName] ?? Kumta();
 
                           Navigator.push(
                             context,
@@ -205,31 +206,14 @@ class _Homepage1State extends State<HomePage> {
                                 builder: (context) => destinationPage),
                           );
                         },
-                        // onTap: () {
-                        //   Navigator.push(
-                        //       context,
-                        //       MaterialPageRoute(
-                        //           builder: (context) => Yana()));
-                        // },
-                        // onTap: () {
-                        //   Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: (context) => PostScreen(
-                        //         image: places[index]['image']!,
-                        //         name: places[index]['name']!,
-                        //       ),
-                        //     ),
-                        //   );
-                        // },
-
                         child: Container(
                           height: 200,
                           decoration: BoxDecoration(
                             color: Colors.black,
                             borderRadius: BorderRadius.circular(15),
                             image: DecorationImage(
-                                image: AssetImage(places[index]['image']!),
+                                image:
+                                    AssetImage(filteredPlaces[index]['image']!),
                                 fit: BoxFit.cover,
                                 opacity: 0.8),
                           ),
@@ -241,7 +225,7 @@ class _Homepage1State extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              places[index]['name']!,
+                              filteredPlaces[index]['name']!,
                               style: GoogleFonts.getFont('Roboto Condensed',
                                   fontSize: 20, fontWeight: FontWeight.w600),
                             ),
@@ -252,9 +236,7 @@ class _Homepage1State extends State<HomePage> {
                           ],
                         ),
                       ),
-                      SizedBox(
-                        height: 5,
-                      ),
+                      SizedBox(height: 5),
                       Row(
                         children: [
                           Icon(
@@ -275,11 +257,7 @@ class _Homepage1State extends State<HomePage> {
           ]),
         ),
       ),
-      bottomNavigationBar: BottomBar(
-        selectedIndex: 2,
-      ),
+      bottomNavigationBar: BottomBar(selectedIndex: 2),
     );
-
-    // );
   }
 }
