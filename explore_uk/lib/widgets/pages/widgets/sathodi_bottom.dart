@@ -2,14 +2,14 @@ import 'package:explore_uk/pages/google-maps.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class KarwarBottom extends StatefulWidget {
-  const KarwarBottom({super.key});
+class SathodiBottom extends StatefulWidget {
+  const SathodiBottom({super.key});
 
   @override
-  State<KarwarBottom> createState() => _KarwarBottomState();
+  State<SathodiBottom> createState() => _SathodiBottomState();
 }
 
-class _KarwarBottomState extends State<KarwarBottom> {
+class _SathodiBottomState extends State<SathodiBottom> {
   bool isBookmark = false;
 
   @override
@@ -32,7 +32,7 @@ class _KarwarBottomState extends State<KarwarBottom> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Karwar",
+                      "Sathodi, Yellapur",
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                     ),
@@ -58,7 +58,7 @@ class _KarwarBottomState extends State<KarwarBottom> {
                   height: 25,
                 ),
                 Text(
-                  'Karwar is famous for its beautiful beaches, rich history, and diverse wildlife. Located along the west coast of India, Karwar is a popular tourist destination in Karnataka, known for its pristine beaches, rich history, and diverse wildlife. From the popular Karwar Beach and Devbagh Beach, to the imposing Karwar Lighthouse and the tranquil Kaju Bagh Beach, there is plenty to explore in Karwar. History buffs can visit the Sadashivgad Fort, built in the 17th century, which offers stunning views of the Kali River.',
+                  'Sathoddi Falls is a picturesque waterfall located in the Western Ghats, Uttara Kannada District Located 32 km (20 mi) from Yellapur and 74 km (46 mi) from Sirsi. It is about 15 metres (49.2 feet) tall.[1] The stream then flows into the backwaters of the Kodasalli Dam, into the Kali River.',
                   textAlign: TextAlign.justify,
                 ),
                 SizedBox(
@@ -68,7 +68,7 @@ class _KarwarBottomState extends State<KarwarBottom> {
                   children: [
                     Expanded(
                       child: Image.asset(
-                        'assets/images/kwr6.jpg',
+                        'assets/images/sathodi7.jpg',
                         fit: BoxFit.cover,
                         height: 90,
                       ),
@@ -78,7 +78,7 @@ class _KarwarBottomState extends State<KarwarBottom> {
                     ),
                     Expanded(
                         child: Image.asset(
-                      'assets/images/kwr5.jpg',
+                      'assets/images/sathodi4.jpg',
                       fit: BoxFit.cover,
                       height: 90,
                     )),
@@ -94,7 +94,7 @@ class _KarwarBottomState extends State<KarwarBottom> {
                           color: Colors.black,
                           borderRadius: BorderRadius.circular(15),
                           image: DecorationImage(
-                              image: AssetImage('assets/images/kwr1.jpeg'),
+                              image: AssetImage('assets/images/sathodi3.jpg'),
                               fit: BoxFit.cover,
                               opacity: 0.4)),
                       child: Text(

@@ -15,8 +15,7 @@ class _MagodPageState extends State<MagodPage> {
     return Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/images/sathodi1.jpg'),
-              fit: BoxFit.cover),
+              image: AssetImage('assets/images/magod4.jpg'), fit: BoxFit.cover),
         ),
         child: Scaffold(
           backgroundColor: Colors.transparent,

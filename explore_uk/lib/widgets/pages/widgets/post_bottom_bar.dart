@@ -72,7 +72,7 @@ class _PostBottomBarState extends State<PostBottomBar> {
                   children: [
                     Expanded(
                       child: Image.asset(
-                        'assets/images/yana2.jpg',
+                        'assets/images/yana.jpg',
                         fit: BoxFit.cover,
                         height: 90,
                         // width: 120,

@@ -1,21 +1,21 @@
 import 'package:explore_uk/widgets/pages/widgets/cardappbar.dart';
-import 'package:explore_uk/widgets/pages/widgets/post_bottom_bar.dart';
+import 'package:explore_uk/widgets/pages/widgets/mirjan_bottom.dart';
 import 'package:flutter/material.dart';
 
-class Kumta extends StatefulWidget {
-  const Kumta({super.key});
+class Mirjan extends StatefulWidget {
+  const Mirjan({super.key});
 
   @override
-  State<Kumta> createState() => _KumtaState();
+  State<Mirjan> createState() => _MirjanState();
 }
 
-class _KumtaState extends State<Kumta> {
+class _MirjanState extends State<Mirjan> {
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/forest.jpg'),
+          image: AssetImage('assets/images/mir1.jpg'),
           fit: BoxFit.cover,
           // opacity: 0.9,
         ),
@@ -24,7 +24,7 @@ class _KumtaState extends State<Kumta> {
         backgroundColor: Colors.transparent,
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(115), child: CardAppBar()),
-        bottomNavigationBar: PostBottomBar(),
+        bottomNavigationBar: MirjanBottom(),
       ),
     );
   }

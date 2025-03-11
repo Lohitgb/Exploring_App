@@ -32,7 +32,7 @@ class _MagodBottomState extends State<MagodBottom> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Magod, Sirsi",
+                      "Magod, Yellapur",
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                     ),
@@ -58,7 +58,7 @@ class _MagodBottomState extends State<MagodBottom> {
                   height: 25,
                 ),
                 Text(
-                  '####',
+                  'Magod Falls is a group of waterfalls in Karnataka, India, where the river Bedti falls from a height of nearly 200 metres (660 ft) in two steps. The falls are located about 16 km (9.9 mi) from the town of Yellapur and 58 km (36 mi) from Sirsi, in the district of Uttara Kannada, and are easily accessible from several lakes and towns.',
                   textAlign: TextAlign.justify,
                 ),
                 SizedBox(
@@ -68,7 +68,7 @@ class _MagodBottomState extends State<MagodBottom> {
                   children: [
                     Expanded(
                       child: Image.asset(
-                        'assets/images/magod.jpg',
+                        'assets/images/magod5.jpg',
                         fit: BoxFit.cover,
                         height: 90,
                       ),
@@ -78,7 +78,7 @@ class _MagodBottomState extends State<MagodBottom> {
                     ),
                     Expanded(
                         child: Image.asset(
-                      'assets/images/magod.jpg',
+                      'assets/images/magod2.jpg',
                       fit: BoxFit.cover,
                       height: 90,
                     )),
@@ -94,7 +94,7 @@ class _MagodBottomState extends State<MagodBottom> {
                           color: Colors.black,
                           borderRadius: BorderRadius.circular(15),
                           image: DecorationImage(
-                              image: AssetImage('assets/images/magod.jpg'),
+                              image: AssetImage('assets/images/magod3.jpg'),
                               fit: BoxFit.cover,
                               opacity: 0.4)),
                       child: Text(

@@ -1,9 +1,10 @@
 import 'package:explore_uk/widgets/bottombar.dart';
 import 'package:explore_uk/widgets/pages/honnavr.dart';
 import 'package:explore_uk/widgets/pages/karwar.dart';
-import 'package:explore_uk/widgets/pages/kumta.dart';
+import 'package:explore_uk/widgets/pages/mirjan.dart';
 import 'package:explore_uk/widgets/pages/magod.dart';
 import 'package:explore_uk/widgets/pages/murdeshwar.dart';
+import 'package:explore_uk/widgets/pages/sathodi.dart';
 import 'package:explore_uk/widgets/pages/yana.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,10 +19,11 @@ class HomePage extends StatefulWidget {
 class _Homepage1State extends State<HomePage> {
   final List<Map<String, String>> places = [
     {'image': 'assets/images/honnavr.jpg', 'name': 'Honnavar'},
-    {'image': 'assets/images/sathodi1.jpg', 'name': 'Magod'},
-    {'image': 'assets/images/magod.jpg', 'name': 'Kumta'},
-    {'image': 'assets/images/sathodi.jpg', 'name': 'Karwar'},
-    {'image': 'assets/images/yana1.jpg', 'name': 'Yana'},
+    {'image': 'assets/images/magod6.jpg', 'name': 'Magod'},
+    {'image': 'assets/images/mir1.jpg', 'name': 'Mirjan'},
+    {'image': 'assets/images/sathodi.jpg', 'name': 'Sathodi'},
+    {'image': 'assets/images/kwr1.jpeg', 'name': 'Karwar'},
+    {'image': 'assets/images/yana2.jpg', 'name': 'Yana'},
     {'image': 'assets/images/mur.jpg', 'name': 'Murdeshwar'},
   ];
 
@@ -35,8 +37,9 @@ class _Homepage1State extends State<HomePage> {
 
   // Mapping places to their respective pages
   final Map<String, Widget> placePages = {
-    'Kumta': Kumta(),
+    'Mirjan': Mirjan(),
     'Magod': MagodPage(),
+    'Sathodi': Sathodi(),
     'Yana': Yana(),
     'Karwar': KarwarPage(),
     'Murdeshwar': MurdeshwarPage(),
@@ -87,12 +90,13 @@ class _Homepage1State extends State<HomePage> {
               color: Color(0xFF00BF6D),
               child: Form(
                   child: TextFormField(
-                autofocus: true,
+                autofocus: false,
                 textInputAction: TextInputAction.search,
                 onChanged: (value) => filterSearch(value),
                 decoration: InputDecoration(
                   hintText: 'Search',
                   hintStyle: TextStyle(
+                    // ignore: deprecated_member_use
                     color: Color(0xFF1D1D35).withOpacity(0.64),
                   ),
                   filled: true,
@@ -198,7 +202,7 @@ class _Homepage1State extends State<HomePage> {
                         onTap: () {
                           String placeName = filteredPlaces[index]['name']!;
                           Widget destinationPage =
-                              placePages[placeName] ?? Kumta();
+                              placePages[placeName] ?? Mirjan();
 
                           Navigator.push(
                             context,

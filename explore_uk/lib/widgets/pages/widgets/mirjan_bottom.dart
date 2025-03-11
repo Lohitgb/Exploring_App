@@ -2,16 +2,15 @@ import 'package:explore_uk/pages/google-maps.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class KarwarBottom extends StatefulWidget {
-  const KarwarBottom({super.key});
+class MirjanBottom extends StatefulWidget {
+  const MirjanBottom({super.key});
 
   @override
-  State<KarwarBottom> createState() => _KarwarBottomState();
+  State<MirjanBottom> createState() => _MirjanBottomState();
 }
 
-class _KarwarBottomState extends State<KarwarBottom> {
+class _MirjanBottomState extends State<MirjanBottom> {
   bool isBookmark = false;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,7 +31,7 @@ class _KarwarBottomState extends State<KarwarBottom> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Karwar",
+                      "Mirjan, Kumta",
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                     ),
@@ -58,7 +57,7 @@ class _KarwarBottomState extends State<KarwarBottom> {
                   height: 25,
                 ),
                 Text(
-                  'Karwar is famous for its beautiful beaches, rich history, and diverse wildlife. Located along the west coast of India, Karwar is a popular tourist destination in Karnataka, known for its pristine beaches, rich history, and diverse wildlife. From the popular Karwar Beach and Devbagh Beach, to the imposing Karwar Lighthouse and the tranquil Kaju Bagh Beach, there is plenty to explore in Karwar. History buffs can visit the Sadashivgad Fort, built in the 17th century, which offers stunning views of the Kali River.',
+                  'Nestled along the picturesque Arabian Sea coast, Mirjan Port is a hidden gem of Karnataka, renowned for its stunning natural beauty and historical significance. Once a thriving port town, Mirjan is home to a series of serene beaches and unique rock formations that draw in tourists and locals alike. At the heart of the port lies a fascinating fort, offering a glimpse into Mirjans rich past and the flourishing trade that once took place here.',
                   textAlign: TextAlign.justify,
                 ),
                 SizedBox(
@@ -68,7 +67,7 @@ class _KarwarBottomState extends State<KarwarBottom> {
                   children: [
                     Expanded(
                       child: Image.asset(
-                        'assets/images/kwr6.jpg',
+                        'assets/images/mir1.jpg',
                         fit: BoxFit.cover,
                         height: 90,
                       ),
@@ -78,7 +77,7 @@ class _KarwarBottomState extends State<KarwarBottom> {
                     ),
                     Expanded(
                         child: Image.asset(
-                      'assets/images/kwr5.jpg',
+                      'assets/images/mir2.jpg',
                       fit: BoxFit.cover,
                       height: 90,
                     )),
@@ -94,7 +93,7 @@ class _KarwarBottomState extends State<KarwarBottom> {
                           color: Colors.black,
                           borderRadius: BorderRadius.circular(15),
                           image: DecorationImage(
-                              image: AssetImage('assets/images/kwr1.jpeg'),
+                              image: AssetImage('assets/images/mir.jpg'),
                               fit: BoxFit.cover,
                               opacity: 0.4)),
                       child: Text(
