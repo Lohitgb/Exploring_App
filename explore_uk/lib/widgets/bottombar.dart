@@ -83,7 +83,7 @@ class _BottomBarState extends State<BottomBar> {
         ],
       ),
       child: BottomAppBar(
-        color: Color(0xFF00BF6D),
+        color: Colors.white,
         child: SizedBox(
           height: 56,
           width: MediaQuery.of(context).size.width,
@@ -148,7 +148,7 @@ class IconBottomBar extends StatelessWidget {
         size: 25,
         color: selected
             ? (icon == Icons.favorite ? Colors.red : Color(0xff4338CA))
-            : Colors.white,
+            : Colors.grey,
       ),
     );
   }
