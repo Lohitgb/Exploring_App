@@ -59,6 +59,9 @@ class _MagodBottomState extends State<MagodBottom> {
                 ),
                 Text(
                   'Magod Falls is a group of waterfalls in Karnataka, India, where the river Bedti falls from a height of nearly 200 metres (660 ft) in two steps. The falls are located about 16 km (9.9 mi) from the town of Yellapur and 58 km (36 mi) from Sirsi, in the district of Uttara Kannada, and are easily accessible from several lakes and towns.',
+                  style: TextStyle(
+                      fontSize: 15,
+                      color: const Color.fromARGB(255, 82, 82, 82)),
                   textAlign: TextAlign.justify,
                 ),
                 SizedBox(
@@ -113,20 +116,20 @@ class _MagodBottomState extends State<MagodBottom> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(color: Colors.black26, blurRadius: 4)
-                            ]),
-                        child: Icon(
-                          isBookmark ? Icons.bookmark : Icons.bookmark_outline,
-                          color: isBookmark ? Colors.amber : Colors.black,
-                          size: 40,
-                        ),
-                      ),
+                      // Container(
+                      //   padding: EdgeInsets.all(10),
+                      //   decoration: BoxDecoration(
+                      //       borderRadius: BorderRadius.circular(10),
+                      //       color: Colors.white,
+                      //       boxShadow: [
+                      //         BoxShadow(color: Colors.black26, blurRadius: 4)
+                      //       ]),
+                      //   child: Icon(
+                      //     isBookmark ? Icons.bookmark : Icons.bookmark_outline,
+                      //     color: isBookmark ? Colors.amber : Colors.black,
+                      //     size: 40,
+                      //   ),
+                      // ),
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
@@ -136,7 +139,7 @@ class _MagodBottomState extends State<MagodBottom> {
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(
-                              vertical: 15, horizontal: 25),
+                              vertical: 15, horizontal: 100),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.red,
@@ -146,7 +149,9 @@ class _MagodBottomState extends State<MagodBottom> {
                           child: Text(
                             'Go Now',
                             style: GoogleFonts.getFont('Roboto Condensed',
-                                fontSize: 20, fontWeight: FontWeight.w700),
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700),
                           ),
                         ),
                       )

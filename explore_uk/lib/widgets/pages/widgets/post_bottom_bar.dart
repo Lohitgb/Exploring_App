@@ -63,6 +63,9 @@ class _PostBottomBarState extends State<PostBottomBar> {
                 ),
                 Text(
                   'Yana is a tourist destination located in forest of Katgal Range, which is also a part of Malenadu region of Uttara Kannada district of Karnataka state in India. Yana is one of the wettest villages in the world. It is the cleanest village in Karnataka and the second cleanest village in India. The two unique rock outcrops after the village are tourist attractions and easily approachable by two routes one from Kumta-Sirsi Highway by a small trek through 0.5 kilometres (0.31 mi) the thick forests from the nearest road head and another from Sirsi-Ankola Road.',
+                  style: TextStyle(
+                      fontSize: 15,
+                      color: const Color.fromARGB(255, 82, 82, 82)),
                   textAlign: TextAlign.justify,
                 ),
                 SizedBox(
@@ -121,20 +124,20 @@ class _PostBottomBarState extends State<PostBottomBar> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(color: Colors.black26, blurRadius: 4)
-                            ]),
-                        child: Icon(
-                          isBookmark ? Icons.bookmark : Icons.bookmark_outline,
-                          color: isBookmark ? Colors.amber : Colors.black,
-                          size: 40,
-                        ),
-                      ),
+                      // Container(
+                      //   padding: EdgeInsets.all(10),
+                      //   decoration: BoxDecoration(
+                      //       borderRadius: BorderRadius.circular(10),
+                      //       color: Colors.white,
+                      //       boxShadow: [
+                      //         BoxShadow(color: Colors.black26, blurRadius: 4)
+                      //       ]),
+                      //   child: Icon(
+                      //     isBookmark ? Icons.bookmark : Icons.bookmark_outline,
+                      //     color: isBookmark ? Colors.amber : Colors.black,
+                      //     size: 40,
+                      //   ),
+                      // ),
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
@@ -144,7 +147,7 @@ class _PostBottomBarState extends State<PostBottomBar> {
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(
-                              vertical: 15, horizontal: 25),
+                              vertical: 15, horizontal: 100),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.red,
@@ -154,7 +157,9 @@ class _PostBottomBarState extends State<PostBottomBar> {
                           child: Text(
                             'Go Now',
                             style: GoogleFonts.getFont('Roboto Condensed',
-                                fontSize: 20, fontWeight: FontWeight.w700),
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700),
                           ),
                         ),
                       )

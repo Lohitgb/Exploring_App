@@ -59,6 +59,9 @@ class _SathodiBottomState extends State<SathodiBottom> {
                 ),
                 Text(
                   'Sathoddi Falls is a picturesque waterfall located in the Western Ghats, Uttara Kannada District Located 32 km (20 mi) from Yellapur and 74 km (46 mi) from Sirsi. It is about 15 metres (49.2 feet) tall.[1] The stream then flows into the backwaters of the Kodasalli Dam, into the Kali River.',
+                  style: TextStyle(
+                      fontSize: 15,
+                      color: const Color.fromARGB(255, 82, 82, 82)),
                   textAlign: TextAlign.justify,
                 ),
                 SizedBox(
@@ -113,20 +116,20 @@ class _SathodiBottomState extends State<SathodiBottom> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(color: Colors.black26, blurRadius: 4)
-                            ]),
-                        child: Icon(
-                          isBookmark ? Icons.bookmark : Icons.bookmark_outline,
-                          color: isBookmark ? Colors.amber : Colors.black,
-                          size: 40,
-                        ),
-                      ),
+                      // Container(
+                      //   padding: EdgeInsets.all(10),
+                      //   decoration: BoxDecoration(
+                      //       borderRadius: BorderRadius.circular(10),
+                      //       color: Colors.white,
+                      //       boxShadow: [
+                      //         BoxShadow(color: Colors.black26, blurRadius: 4)
+                      //       ]),
+                      //   child: Icon(
+                      //     isBookmark ? Icons.bookmark : Icons.bookmark_outline,
+                      //     color: isBookmark ? Colors.amber : Colors.black,
+                      //     size: 40,
+                      //   ),
+                      // ),
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
@@ -136,7 +139,7 @@ class _SathodiBottomState extends State<SathodiBottom> {
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(
-                              vertical: 15, horizontal: 25),
+                              vertical: 15, horizontal: 100),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.red,
@@ -146,7 +149,9 @@ class _SathodiBottomState extends State<SathodiBottom> {
                           child: Text(
                             'Go Now',
                             style: GoogleFonts.getFont('Roboto Condensed',
-                                fontSize: 20, fontWeight: FontWeight.w700),
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700),
                           ),
                         ),
                       )

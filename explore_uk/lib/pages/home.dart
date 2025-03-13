@@ -18,13 +18,41 @@ class HomePage extends StatefulWidget {
 
 class _Homepage1State extends State<HomePage> {
   final List<Map<String, String>> places = [
-    {'image': 'assets/images/honnavr.jpg', 'name': 'Honnavar'},
-    {'image': 'assets/images/magod6.jpg', 'name': 'Magod'},
-    {'image': 'assets/images/mir1.jpg', 'name': 'Mirjan'},
-    {'image': 'assets/images/sathodi.jpg', 'name': 'Sathodi'},
-    {'image': 'assets/images/kwr1.jpeg', 'name': 'Karwar'},
-    {'image': 'assets/images/yana2.jpg', 'name': 'Yana'},
-    {'image': 'assets/images/mur.jpg', 'name': 'Murdeshwar'},
+    {
+      'image': 'assets/images/honnavr.jpg',
+      'name': 'Honnavar',
+      'description': 'A beautiful coastal town'
+    },
+    {
+      'image': 'assets/images/magod6.jpg',
+      'name': 'Magod',
+      'description': 'Stunning waterfalls'
+    },
+    {
+      'image': 'assets/images/mir1.jpg',
+      'name': 'Mirjan',
+      'description': 'Historical fort'
+    },
+    {
+      'image': 'assets/images/sathodi.jpg',
+      'name': 'Sathodi',
+      'description': 'A hidden gem'
+    },
+    {
+      'image': 'assets/images/kwr1.jpeg',
+      'name': 'Karwar',
+      'description': 'Scenic beach destination'
+    },
+    {
+      'image': 'assets/images/yana2.jpg',
+      'name': 'Yana',
+      'description': 'Unique rock formations'
+    },
+    {
+      'image': 'assets/images/mur.jpg',
+      'name': 'Murdeshwar',
+      'description': 'Famous for Lord Shiva statue'
+    },
   ];
 
   final listPlaces = [
@@ -210,49 +238,99 @@ class _Homepage1State extends State<HomePage> {
                                 builder: (context) => destinationPage),
                           );
                         },
-                        child: Container(
-                          height: 200,
-                          decoration: BoxDecoration(
-                            color: Colors.black,
-                            borderRadius: BorderRadius.circular(15),
-                            image: DecorationImage(
-                                image:
-                                    AssetImage(filteredPlaces[index]['image']!),
-                                fit: BoxFit.cover,
-                                opacity: 0.8),
-                          ),
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              bottom: 0,
+                              left: 0,
+                              right: 0,
+                              child: Container(
+                                height: 20,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.vertical(
+                                      bottom: Radius.circular(15)),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black
+                                          // ignore: deprecated_member_use
+                                          .withOpacity(0.5), // Shadow color
+                                      spreadRadius: 0,
+                                      blurRadius: 10,
+                                      offset: Offset(
+                                          0, 10), // Moves shadow downward only
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Container(
+                              height: 200,
+                              decoration: BoxDecoration(
+                                color: Colors.black,
+                                borderRadius: BorderRadius.circular(15),
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                      filteredPlaces[index]['image']!),
+                                  fit: BoxFit.cover,
+                                  opacity: 0.8,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              filteredPlaces[index]['name']!,
-                              style: GoogleFonts.getFont('Roboto Condensed',
-                                  fontSize: 20, fontWeight: FontWeight.w600),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  // Place Name
+                                  Text(
+                                    filteredPlaces[index]['name']!,
+                                    style: GoogleFonts.getFont(
+                                        'Roboto Condensed',
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  SizedBox(height: 3),
+
+                                  // Description
+                                  Text(
+                                    filteredPlaces[index]['description']!,
+                                    style: GoogleFonts.getFont(
+                                        'Roboto Condensed',
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.grey[700]),
+                                  ),
+                                ],
+                              ),
                             ),
-                            Icon(
-                              Icons.more_vert,
-                              size: 25,
-                            )
+                            SizedBox(height: 25),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.amber,
+                                ),
+                                Text(
+                                  '4.3 ',
+                                  style: TextStyle(fontWeight: FontWeight.w600),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: 3,
+                            ),
                           ],
                         ),
                       ),
-                      SizedBox(height: 5),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.star,
-                            color: Colors.amber,
-                          ),
-                          Text(
-                            '4.3 ',
-                            style: TextStyle(fontWeight: FontWeight.w600),
-                          )
-                        ],
-                      )
+                      // SizedBox(height: 5),
                     ],
                   ),
                 );

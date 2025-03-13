@@ -13,7 +13,7 @@ class _CardAppBarState extends State<CardAppBar> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(20, 50, 20, 20),
+      padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

@@ -59,6 +59,9 @@ class _MurdeshwarBottomState extends State<MurdeshwarBottom> {
                 ),
                 Text(
                   'Murudeshwar Temple is a famous Hindu temple dedicated to Lord Shiva, located in Karnataka, India. It is known for having the second-tallest Shiva statue in the world, standing at 123 feet. The temple is situated on the Arabian Sea coast, offering stunning ocean views. The 20-story Rajagopura (temple tower) is another major attraction. The temple is associated with the legend of the Atma Linga, connected to the Ramayana. It is a significant pilgrimage site and a popular tourist destination.',
+                  style: TextStyle(
+                      fontSize: 15,
+                      color: const Color.fromARGB(255, 82, 82, 82)),
                   textAlign: TextAlign.justify,
                 ),
                 SizedBox(
@@ -113,20 +116,20 @@ class _MurdeshwarBottomState extends State<MurdeshwarBottom> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(color: Colors.black26, blurRadius: 4)
-                            ]),
-                        child: Icon(
-                          isBookmark ? Icons.bookmark : Icons.bookmark_outline,
-                          color: isBookmark ? Colors.amber : Colors.black,
-                          size: 40,
-                        ),
-                      ),
+                      // Container(
+                      //   padding: EdgeInsets.all(10),
+                      //   decoration: BoxDecoration(
+                      //       borderRadius: BorderRadius.circular(10),
+                      //       color: Colors.white,
+                      //       boxShadow: [
+                      //         BoxShadow(color: Colors.black26, blurRadius: 4)
+                      //       ]),
+                      //   child: Icon(
+                      //     isBookmark ? Icons.bookmark : Icons.bookmark_outline,
+                      //     color: isBookmark ? Colors.amber : Colors.black,
+                      //     size: 40,
+                      //   ),
+                      // ),
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
@@ -136,7 +139,7 @@ class _MurdeshwarBottomState extends State<MurdeshwarBottom> {
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(
-                              vertical: 15, horizontal: 25),
+                              vertical: 15, horizontal: 100),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.red,
@@ -146,7 +149,9 @@ class _MurdeshwarBottomState extends State<MurdeshwarBottom> {
                           child: Text(
                             'Go Now',
                             style: GoogleFonts.getFont('Roboto Condensed',
-                                fontSize: 20, fontWeight: FontWeight.w700),
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700),
                           ),
                         ),
                       )

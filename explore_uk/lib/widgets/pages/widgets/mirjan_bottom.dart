@@ -58,6 +58,9 @@ class _MirjanBottomState extends State<MirjanBottom> {
                 ),
                 Text(
                   'Nestled along the picturesque Arabian Sea coast, Mirjan Port is a hidden gem of Karnataka, renowned for its stunning natural beauty and historical significance. Once a thriving port town, Mirjan is home to a series of serene beaches and unique rock formations that draw in tourists and locals alike. At the heart of the port lies a fascinating fort, offering a glimpse into Mirjans rich past and the flourishing trade that once took place here.',
+                  style: TextStyle(
+                      fontSize: 15,
+                      color: const Color.fromARGB(255, 82, 82, 82)),
                   textAlign: TextAlign.justify,
                 ),
                 SizedBox(
@@ -112,20 +115,20 @@ class _MirjanBottomState extends State<MirjanBottom> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Container(
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(color: Colors.black26, blurRadius: 4)
-                            ]),
-                        child: Icon(
-                          isBookmark ? Icons.bookmark : Icons.bookmark_outline,
-                          color: isBookmark ? Colors.amber : Colors.black,
-                          size: 40,
-                        ),
-                      ),
+                      // Container(
+                      //   padding: EdgeInsets.all(10),
+                      //   decoration: BoxDecoration(
+                      //       borderRadius: BorderRadius.circular(10),
+                      //       color: Colors.white,
+                      //       boxShadow: [
+                      //         BoxShadow(color: Colors.black26, blurRadius: 4)
+                      //       ]),
+                      //   child: Icon(
+                      //     isBookmark ? Icons.bookmark : Icons.bookmark_outline,
+                      //     color: isBookmark ? Colors.amber : Colors.black,
+                      //     size: 40,
+                      //   ),
+                      // ),
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
@@ -135,7 +138,7 @@ class _MirjanBottomState extends State<MirjanBottom> {
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(
-                              vertical: 15, horizontal: 25),
+                              vertical: 15, horizontal: 100),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.red,
@@ -145,7 +148,9 @@ class _MirjanBottomState extends State<MirjanBottom> {
                           child: Text(
                             'Go Now',
                             style: GoogleFonts.getFont('Roboto Condensed',
-                                fontSize: 20, fontWeight: FontWeight.w700),
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700),
                           ),
                         ),
                       )
