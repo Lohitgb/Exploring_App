@@ -11,6 +11,57 @@ class HonnavarBottom extends StatefulWidget {
 
 class _HonnavarBottomState extends State<HonnavarBottom> {
   bool isBookmark = false;
+  final List<String> imageList = [
+    'assets/images/honnavr.jpg',
+    'assets/images/hnr.jpg',
+    'assets/images/honnavar.jpg',
+    // 'assets/images/yana3.jpg',
+    // 'assets/images/yana4.jpg'
+  ];
+
+  void showFullImageGallery() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      builder: (context) => Container(
+        height: MediaQuery.of(context).size.height * 0.8,
+        padding: EdgeInsets.all(10),
+        child: GridView.builder(
+          itemCount: imageList.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+          ),
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: () => showImageDialog(imageList[index]),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.asset(imageList[index], fit: BoxFit.cover),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  void showImageDialog(String imagePath) {
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        backgroundColor: Colors.transparent,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Image.asset(imagePath, fit: BoxFit.cover),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,25 +140,28 @@ class _HonnavarBottomState extends State<HonnavarBottom> {
                       width: 5,
                     ),
                     Expanded(
-                        child: Container(
-                      alignment: Alignment.center,
-                      height: 90,
-                      margin: EdgeInsets.only(right: 5),
-                      decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
-                              image: AssetImage('assets/images/honnavar.jpg'),
-                              fit: BoxFit.cover,
-                              opacity: 0.4)),
-                      child: Text(
-                        '10+',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ))
+                        child: GestureDetector(
+                            onTap: showFullImageGallery,
+                            child: Container(
+                              alignment: Alignment.center,
+                              height: 90,
+                              margin: EdgeInsets.only(right: 5),
+                              decoration: BoxDecoration(
+                                  color: Colors.black,
+                                  borderRadius: BorderRadius.circular(15),
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/honnavar.jpg'),
+                                      fit: BoxFit.cover,
+                                      opacity: 0.4)),
+                              child: Text(
+                                '10+',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            )))
                   ],
                 ),
                 SizedBox(height: 15),
@@ -116,20 +170,6 @@ class _HonnavarBottomState extends State<HonnavarBottom> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      // Container(
-                      //   padding: EdgeInsets.all(10),
-                      //   decoration: BoxDecoration(
-                      //       borderRadius: BorderRadius.circular(10),
-                      //       color: Colors.white,
-                      //       boxShadow: [
-                      //         BoxShadow(color: Colors.black26, blurRadius: 4)
-                      //       ]),
-                      //   child: Icon(
-                      //     isBookmark ? Icons.bookmark : Icons.bookmark_outline,
-                      //     color: isBookmark ? Colors.amber : Colors.black,
-                      //     size: 40,
-                      //   ),
-                      // ),
                       GestureDetector(
                         onTap: () {
                           Navigator.push(

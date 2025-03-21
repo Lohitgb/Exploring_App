@@ -12,6 +12,60 @@ class KarwarBottom extends StatefulWidget {
 class _KarwarBottomState extends State<KarwarBottom> {
   bool isBookmark = false;
 
+  final List<String> imageList = [
+    'assets/images/kwr.jpeg',
+    'assets/images/kwr1.jpeg',
+    'assets/images/kwr5.jpg',
+    'assets/images/kwr6.jpg',
+    'assets/images/kwr.jpeg',
+    'assets/images/tagore.jpg',
+  ];
+
+  void showFullImageGallery() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      builder: (context) => Container(
+        height: MediaQuery.of(context).size.height * 0.8,
+        padding: EdgeInsets.all(10),
+        child: GridView.builder(
+          itemCount: imageList.length,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: () => showImageDialog(imageList[index]),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.asset(
+                  imageList[index],
+                  fit: BoxFit.cover,
+                ),
+              ),
+            );
+          },
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10),
+        ),
+      ),
+    );
+  }
+
+  void showImageDialog(String imagePath) {
+    showDialog(
+        context: context,
+        builder: (context) => Dialog(
+              backgroundColor: Colors.transparent,
+              child: Container(
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(15)),
+                child: Image.asset(
+                  imagePath,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -89,25 +143,28 @@ class _KarwarBottomState extends State<KarwarBottom> {
                       width: 5,
                     ),
                     Expanded(
-                        child: Container(
-                      alignment: Alignment.center,
-                      height: 90,
-                      margin: EdgeInsets.only(right: 5),
-                      decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
-                              image: AssetImage('assets/images/kwr1.jpeg'),
-                              fit: BoxFit.cover,
-                              opacity: 0.4)),
-                      child: Text(
-                        '10+',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ))
+                        child: GestureDetector(
+                            onTap: showFullImageGallery,
+                            child: Container(
+                              alignment: Alignment.center,
+                              height: 90,
+                              margin: EdgeInsets.only(right: 5),
+                              decoration: BoxDecoration(
+                                  color: Colors.black,
+                                  borderRadius: BorderRadius.circular(15),
+                                  image: DecorationImage(
+                                      image:
+                                          AssetImage('assets/images/kwr1.jpeg'),
+                                      fit: BoxFit.cover,
+                                      opacity: 0.4)),
+                              child: Text(
+                                '10+',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            )))
                   ],
                 ),
                 SizedBox(height: 15),

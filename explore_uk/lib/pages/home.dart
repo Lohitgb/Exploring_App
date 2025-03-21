@@ -330,6 +330,14 @@ class _Homepage1State extends State<HomePage> {
                           ],
                         ),
                       ),
+                      SizedBox(height: 3),
+                      SizedBox(
+                        width: double.infinity,
+                        child: Divider(
+                          color: Colors.grey[400],
+                          thickness: 1,
+                        ),
+                      )
                       // SizedBox(height: 5),
                     ],
                   ),
