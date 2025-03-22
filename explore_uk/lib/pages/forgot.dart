@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:explore_uk/pages/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,9 +13,52 @@ class Forgot extends StatefulWidget {
 }
 
 class _ForgotState extends State<Forgot> {
+  final _formKey = GlobalKey<FormState>();
   String email = '';
   bool isloading = false;
-  TextEditingController emailController = TextEditingController();
+  TextEditingController mailController = TextEditingController();
+
+//Error handling code
+
+// Forgot() async {
+//     if (email.isEmpty) {
+//       Get.snackbar('Error', 'Please enter your email',
+//           backgroundColor: Colors.grey.withOpacity(0.5),
+//           margin: EdgeInsets.all(30));
+//       return;
+//     }
+
+//     setState(() {
+//       isloading = true;
+//     });
+
+//     try {
+//       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+//       Get.snackbar('Link Sent', 'A link has been sent to your Email',
+//           backgroundColor: Colors.white.withOpacity(0.5),
+//           margin: EdgeInsets.all(30));
+//     } on FirebaseAuthException catch (e) {
+//       String errorMessage = 'Something went wrong';
+
+//       if (e.code == 'user-not-found') {
+//         errorMessage = 'No account found with this email';
+//       } else if (e.code == 'invalid-email') {
+//         errorMessage = 'Invalid email format';
+//       }
+
+//       Get.snackbar('Error', errorMessage,
+//           backgroundColor: Colors.grey.withOpacity(0.5),
+//           margin: EdgeInsets.all(30));
+//     } catch (e) {
+//       Get.snackbar('Error', 'An unexpected error occurred: $e',
+//           backgroundColor: Colors.grey.withOpacity(0.5),
+//           margin: EdgeInsets.all(30));
+//     }
+
+//     setState(() {
+//       isloading = false;
+//     });
+//   }
 
   Forgot() async {
     setState(() {
@@ -25,8 +67,9 @@ class _ForgotState extends State<Forgot> {
     await FirebaseAuth.instance
         .sendPasswordResetEmail(email: email)
         .then((Value) => {
-              Get.snackbar('Link Sent', 'A link has been sent to your email',
-                  backgroundColor: Colors.amber[100],
+              Get.snackbar('Link Sent', 'A link has been sent to your Email',
+                  // ignore: deprecated_member_use
+                  backgroundColor: Colors.white.withOpacity(0.5),
                   margin: EdgeInsets.all(30)),
             });
     setState(() {
@@ -38,119 +81,111 @@ class _ForgotState extends State<Forgot> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.white,
       body: Stack(
         fit: StackFit.expand,
         children: [
           Image.asset(
-            'assets/images/vibhooti-falls.jpg',
+            'assets/images/rain.jpg',
             fit: BoxFit.cover,
           ),
           BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+            // ignore: deprecated_member_use
+            child: Container(color: Colors.white.withOpacity(0.1)),
+          ),
+          Center(
             child: Container(
-              // ignore: deprecated_member_use
-              color: Colors.white.withOpacity(0.1),
-            ),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Column(
-            children: [
-              Container(
-                // color: Colors.pink,
-                padding: EdgeInsets.fromLTRB(50, 270, 50, 270),
-                child: Form(
-                    child: Column(
+              padding: EdgeInsets.all(20),
+              margin: EdgeInsets.symmetric(horizontal: 30),
+              decoration: BoxDecoration(
+                // ignore: deprecated_member_use
+                color: Colors.white.withOpacity(0.5),
+                borderRadius: BorderRadius.circular(20),
+                // ignore: deprecated_member_use
+                boxShadow: [
+                  BoxShadow(
+                      // ignore: deprecated_member_use
+                      color: Colors.black.withOpacity(0.2),
+                      blurRadius: 10,
+                      spreadRadius: 2,
+                      offset: Offset(0, 5))
+                ],
+              ),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 2.0, horizontal: 30.0),
-                      decoration: BoxDecoration(
-                          color: Color(0xFFedf0f8),
-                          borderRadius: BorderRadius.circular(30)),
-                      child: TextFormField(
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'please enter Email';
-                          }
-                          return null;
-                        },
-                        controller: emailController,
-                        decoration: InputDecoration(
-                            hintText: 'Email',
-                            border: InputBorder.none,
-                            hintStyle: TextStyle(
-                                color: Color(0xFFb2b7bf), fontSize: 18)),
-                      ),
+                    Text(
+                      "Forgot Password",
+                      style: GoogleFonts.getFont("Roboto Condensed",
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
                     ),
-                    SizedBox(
-                      height: 30,
-                    ),
+                    SizedBox(height: 20),
+                    buildInputField(mailController, 'Email'),
+                    SizedBox(height: 15),
                     GestureDetector(
                       onTap: () {
-                        setState(() {
-                          email = emailController.text;
-                        });
-                        Forgot();
+                        if (_formKey.currentState!.validate()) {
+                          setState(() {
+                            email = mailController.text;
+                            mailController.clear();
+                          });
+                          Forgot();
+                        }
                       },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 5.0, vertical: 12.0),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.blue[600],
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Forgot Password',
-                            style: GoogleFonts.getFont('Roboto Condensed',
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white),
-                          ),
-                        ),
-                      ),
+                      child: buildButton('Forgot Password', Colors.blue[600]!),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Don't have an account ?",
-                          style: GoogleFonts.getFont('Roboto Condensed',
-                              fontSize: 15,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.black),
-                        ),
-                        SizedBox(width: 5.0),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Signup()));
-                          },
-                          child: Text(
-                            'create',
-                            style: GoogleFonts.getFont('Roboto Condensed',
-                                color: Colors.black,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700),
-                          ),
-                        )
-                      ],
-                    )
+                    SizedBox(height: 15),
                   ],
-                )),
-              )
-            ],
+                ),
+              ),
+            ),
           )
         ],
       ),
     );
   }
+}
+
+Widget buildButton(String text, Color color) {
+  return Container(
+    width: double.infinity,
+    padding: EdgeInsets.symmetric(vertical: 12),
+    decoration: BoxDecoration(
+      color: color,
+      borderRadius: BorderRadius.circular(10),
+    ),
+    child: Center(
+      child: Text(
+        text,
+        style: GoogleFonts.getFont("Roboto Condensed",
+            fontSize: 18, color: Colors.white, fontWeight: FontWeight.w700),
+      ),
+    ),
+  );
+}
+
+Widget buildInputField(TextEditingController controller, String hint,
+    {bool obscureText = false}) {
+  return Container(
+    padding: EdgeInsets.symmetric(horizontal: 20),
+    decoration: BoxDecoration(
+      color: Color(0xFFedf0f8),
+      borderRadius: BorderRadius.circular(30),
+    ),
+    child: TextFormField(
+      validator: (value) => value!.isEmpty ? 'Please enter $hint' : null,
+      controller: controller,
+      obscureText: obscureText,
+      decoration: InputDecoration(
+        border: InputBorder.none,
+        hintText: hint,
+        hintStyle: TextStyle(color: Color(0xFFb2b7bf), fontSize: 15),
+      ),
+    ),
+  );
 }

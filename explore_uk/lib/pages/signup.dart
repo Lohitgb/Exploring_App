@@ -21,7 +21,7 @@ class _SignupState extends State<Signup> {
 
   bool isloading = false;
 
-  TextEditingController emailController = TextEditingController();
+  TextEditingController mailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   Signup() async {
@@ -36,265 +36,187 @@ class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
-        backgroundColor: Colors.white,
-        body: Stack(
-          fit: StackFit.expand,
-          children: [
-            Image.asset(
-              'assets/images/vibhooti-falls.jpg',
-              fit: BoxFit.cover,
-            ),
-            BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
-              child: Container(
-                // ignore: deprecated_member_use
-                color: Colors.white.withOpacity(0.1),
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.white,
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          Image.asset(
+            'assets/images/rain.jpg',
+            fit: BoxFit.cover,
+          ),
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+            child: Container(color: Colors.white.withOpacity(0.1)),
+          ),
+          Center(
+            child: Container(
+              padding: EdgeInsets.all(20),
+              margin: EdgeInsets.symmetric(horizontal: 30),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.5),
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      blurRadius: 10,
+                      spreadRadius: 2,
+                      offset: Offset(0, 5))
+                ],
+              ),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      "Sign Up",
+                      style: GoogleFonts.getFont("Roboto Condensed",
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
+                    SizedBox(height: 20),
+                    buildInputField(mailController, 'Email'),
+                    SizedBox(height: 15),
+                    buildInputField(passwordController, 'Password',
+                        obscureText: true),
+                    SizedBox(height: 20),
+                    GestureDetector(
+                      onTap: () {
+                        if (_formKey.currentState!.validate()) {
+                          setState(() {
+                            email = mailController.text;
+                            password = passwordController.text;
+                          });
+                          Signup();
+                        }
+                      },
+                      child: buildButton('Sign Up', Colors.blue[600]!),
+                    ),
+                    SizedBox(height: 15),
+                    Text(
+                      'Signup with',
+                      style: GoogleFonts.getFont('Roboto Condensed',
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xFF273671)),
+                    ),
+                    SizedBox(height: 15),
+                    buildSocialButtons(),
+                    SizedBox(height: 15),
+                    // SizedBox(
+                    //   width: double.infinity,
+                    //   child: Divider(
+                    //     color: Colors.white,
+                    //     thickness: 1,
+                    //   ),
+                    // ),
+                    // SizedBox(height: 5),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Already have an account?",
+                          style: GoogleFonts.getFont('Roboto Condensed',
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black),
+                        ),
+                        SizedBox(width: 5),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignIn()));
+                          },
+                          child: Text(
+                            'Login',
+                            style: GoogleFonts.getFont("Roboto Condensed",
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.black),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
-            // Padding(
-            //   padding: EdgeInsets.all(50),
-            //   child: Container(
-            //       // color: Colors.amberAccent,
-            //       ),
-            // ),
-            SizedBox(
-              height: 30.0,
-            ),
-            Column(
-              children: [
-                Container(
-                    padding: EdgeInsets.fromLTRB(50, 200, 50, 150),
-                    child: Form(
-                      key: _formKey,
-                      child: Column(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 2.0, horizontal: 30.0),
-                            decoration: BoxDecoration(
-                                color: Color(0xFFedf0f8),
-                                borderRadius: BorderRadius.circular(30)),
-                            child: TextFormField(
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'please enter email';
-                                }
-                                return null;
-                              },
-                              controller: emailController,
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: 'Email',
-                                hintStyle: TextStyle(
-                                    color: Color(0xFFb2b7bf), fontSize: 18),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 2.0, horizontal: 30.0),
-                            decoration: BoxDecoration(
-                              color: Color(0xFFedf0f8),
-                              borderRadius: BorderRadius.circular(30.0),
-                            ),
-                            child: TextFormField(
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter password';
-                                }
-                                return null;
-                              },
-                              controller: passwordController,
-                              decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Password',
-                                  hintStyle: TextStyle(
-                                      color: Color(0xFFb2b7bf), fontSize: 18)),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              if (_formKey.currentState!.validate()) {
-                                email = emailController.text;
-                                password = passwordController.text;
-                              }
-                              Signup();
-                            },
-                            child: Container(
-                              width: MediaQuery.of(context).size.width,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 2.0, vertical: 10.0),
-                              decoration: BoxDecoration(
-                                  color: Colors.blue[600],
-                                  borderRadius: BorderRadius.circular(10.0)),
-                              child: Center(
-                                child: Text(
-                                  'Sign Up',
-                                  style: GoogleFonts.getFont('Roboto Condensed',
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  // AuthMethods().signInWithGoogle(context);
-                                },
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 12, vertical: 8),
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFedF0F8),
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Image.asset(
-                                        'assets/images/google.png',
-                                        height: 30,
-                                        width: 25,
-                                      ),
-                                      // SizedBox(width: 8),
-                                      // Text(
-                                      //   'SignUpWithGoogle',
-                                      //   style: GoogleFonts.getFont(
-                                      //       'Roboto Condensed',
-                                      //       fontWeight: FontWeight.w700,
-                                      //       fontSize: 18),
-                                      // )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      //AuthMethods().signInMethods(conetxt);
-                                    },
-                                    child: Container(
-                                      padding: EdgeInsets.symmetric(
-                                          vertical: 8, horizontal: 12),
-                                      decoration: BoxDecoration(
-                                          color: Color(0xFFedF0F8),
-                                          borderRadius:
-                                              BorderRadius.circular(30.0)),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Image.asset(
-                                            'assets/images/apple.png',
-                                            height: 30,
-                                            width: 25,
-                                          ),
-                                          // SizedBox(
-                                          //   width: 8,
-                                          // ),
-                                          // Text(
-                                          //   'SignUpWithApple',
-                                          //   style: GoogleFonts.getFont(
-                                          //       'Roboto Condensed',
-                                          //       fontSize: 18,
-                                          //       fontWeight: FontWeight.w700),
-                                          // )
-                                        ],
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              SizedBox(width: 15),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      //insta
-                                    },
-                                    child: Container(
-                                      padding: EdgeInsets.symmetric(
-                                          vertical: 8, horizontal: 12),
-                                      decoration: BoxDecoration(
-                                          color: Color(0xFFedF0F8),
-                                          borderRadius:
-                                              BorderRadius.circular(30)),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Image.asset(
-                                            'assets/images/insta.jpg',
-                                            height: 30,
-                                            width: 25,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 15.0,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Already have an account?',
-                                style: GoogleFonts.getFont('Roboto Condensed',
-                                    color: Color(0xFF273671),
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w700),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => SignIn()));
-                                },
-                                child: Text(
-                                  'Login',
-                                  style: GoogleFonts.getFont('Roboto Condensed',
-                                      color: Color(0xFF273671),
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ))
-              ],
-            )
-          ],
-        ));
+          )
+        ],
+      ),
+    );
   }
 }
-//
+
+Widget buildSocialButtons() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      buildSocialButton('assets/images/google.png'),
+      SizedBox(width: 15),
+      buildSocialButton('assets/images/apple.png'),
+      SizedBox(width: 15),
+      buildSocialButton('assets/images/insta.png'),
+    ],
+  );
+}
+
+Widget buildSocialButton(String imagePath) {
+  return GestureDetector(
+    onTap: () {},
+    child: Container(
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+          color: Color(0xFFedF0F8).withOpacity(0.4),
+          borderRadius: BorderRadius.circular(30)),
+      child: Image.asset(
+        imagePath,
+        height: 30,
+        width: 25,
+      ),
+    ),
+  );
+}
+
+Widget buildButton(String text, Color color) {
+  return Container(
+    width: double.infinity,
+    padding: EdgeInsets.symmetric(vertical: 12),
+    decoration: BoxDecoration(
+      color: color,
+      borderRadius: BorderRadius.circular(10),
+    ),
+    child: Center(
+      child: Text(
+        text,
+        style: GoogleFonts.getFont("Roboto Condensed",
+            fontSize: 18, color: Colors.white, fontWeight: FontWeight.w700),
+      ),
+    ),
+  );
+}
+
+Widget buildInputField(TextEditingController controller, String hint,
+    {bool obscureText = false}) {
+  return Container(
+    padding: EdgeInsets.symmetric(horizontal: 20),
+    decoration: BoxDecoration(
+      color: Color(0xFFedf0f8),
+      borderRadius: BorderRadius.circular(30),
+    ),
+    child: TextFormField(
+      validator: (value) => value!.isEmpty ? 'Please enter $hint' : null,
+      controller: controller,
+      obscureText: obscureText,
+      decoration: InputDecoration(
+        border: InputBorder.none,
+        hintText: hint,
+        hintStyle: TextStyle(color: Color(0xFFb2b7bf), fontSize: 15),
+      ),
+    ),
+  );
+}
