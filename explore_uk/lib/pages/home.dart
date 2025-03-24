@@ -17,6 +17,53 @@ class HomePage extends StatefulWidget {
 }
 
 class _Homepage1State extends State<HomePage> {
+  final List<Map<String, String>> Taluk = [
+    {
+      'image': 'assets/images/kwr6.jpg',
+      'name': 'Karwar',
+    },
+    {
+      'image': 'assets/images/mir1.jpg',
+      'name': 'Ankola',
+    },
+    {
+      'image': 'assets/images/kmt8.jpg',
+      'name': 'Kumta',
+    },
+    {
+      'image': 'assets/images/hnr.jpg',
+      'name': 'Honnvar',
+    },
+    {
+      'image': 'assets/images/mir1.jpg',
+      'name': 'Bhatkal',
+    },
+    {
+      'image': 'assets/images/mir1.jpg',
+      'name': 'Sirsi',
+    },
+    {
+      'image': 'assets/images/mir1.jpg',
+      'name': 'Siddapur',
+    },
+    {
+      'image': 'assets/images/magod.jpg',
+      'name': 'Yellapur',
+    },
+    {
+      'image': 'assets/images/mir1.jpg',
+      'name': 'Mundgod',
+    },
+    {
+      'image': 'assets/images/mir1.jpg',
+      'name': 'Haliyal',
+    },
+    {
+      'image': 'assets/images/mir1.jpg',
+      'name': 'Joida',
+    }
+  ];
+
   final List<Map<String, String>> places = [
     {
       'image': 'assets/images/honnavr.jpg',
@@ -142,7 +189,7 @@ class _Homepage1State extends State<HomePage> {
                 child: Container(
                   height: 200,
                   child: ListView.builder(
-                    itemCount: places.length,
+                    itemCount: Taluk.length,
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
                     itemBuilder: (BuildContext context, int index) {
@@ -156,7 +203,7 @@ class _Homepage1State extends State<HomePage> {
                               color: Colors.black,
                               borderRadius: BorderRadius.circular(15),
                               image: DecorationImage(
-                                  image: AssetImage(places[index]['image']!),
+                                  image: AssetImage(Taluk[index]['image']!),
                                   fit: BoxFit.cover,
                                   opacity: 0.7)),
                           child: Column(
@@ -173,7 +220,7 @@ class _Homepage1State extends State<HomePage> {
                               Container(
                                 alignment: Alignment.bottomLeft,
                                 child: Text(
-                                  places[index]['name']!,
+                                  Taluk[index]['name']!,
                                   style: GoogleFonts.getFont('Roboto Condensed',
                                       fontSize: 18,
                                       color: Colors.white,

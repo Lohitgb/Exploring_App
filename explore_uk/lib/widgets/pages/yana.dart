@@ -1,4 +1,4 @@
-import 'package:explore_uk/widgets/pages/widgets/cardappbar.dart';
+import 'package:explore_uk/widgets/cardappbar.dart';
 import 'package:explore_uk/widgets/pages/widgets/post_bottom_bar.dart';
 import 'package:flutter/material.dart';
 

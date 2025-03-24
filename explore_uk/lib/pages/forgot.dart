@@ -82,70 +82,74 @@ class _ForgotState extends State<Forgot> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-          Image.asset(
-            'assets/images/rain.jpg',
-            fit: BoxFit.cover,
-          ),
-          BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
-            // ignore: deprecated_member_use
-            child: Container(color: Colors.white.withOpacity(0.1)),
-          ),
-          Center(
-            child: Container(
-              padding: EdgeInsets.all(20),
-              margin: EdgeInsets.symmetric(horizontal: 30),
-              decoration: BoxDecoration(
-                // ignore: deprecated_member_use
-                color: Colors.white.withOpacity(0.5),
-                borderRadius: BorderRadius.circular(20),
-                // ignore: deprecated_member_use
-                boxShadow: [
-                  BoxShadow(
-                      // ignore: deprecated_member_use
-                      color: Colors.black.withOpacity(0.2),
-                      blurRadius: 10,
-                      spreadRadius: 2,
-                      offset: Offset(0, 5))
-                ],
-              ),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      "Forgot Password",
-                      style: GoogleFonts.getFont("Roboto Condensed",
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                    SizedBox(height: 20),
-                    buildInputField(mailController, 'Email'),
-                    SizedBox(height: 15),
-                    GestureDetector(
-                      onTap: () {
-                        if (_formKey.currentState!.validate()) {
-                          setState(() {
-                            email = mailController.text;
-                            mailController.clear();
-                          });
-                          Forgot();
-                        }
-                      },
-                      child: buildButton('Forgot Password', Colors.blue[600]!),
-                    ),
-                    SizedBox(height: 15),
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            Image.asset(
+              'assets/images/rain.jpg',
+              fit: BoxFit.cover,
+            ),
+            BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+              // ignore: deprecated_member_use
+              child: Container(color: Colors.white.withOpacity(0.1)),
+            ),
+            Center(
+              child: Container(
+                padding: EdgeInsets.all(20),
+                margin: EdgeInsets.symmetric(horizontal: 30),
+                decoration: BoxDecoration(
+                  // ignore: deprecated_member_use
+                  color: Colors.white.withOpacity(0.5),
+                  borderRadius: BorderRadius.circular(20),
+                  // ignore: deprecated_member_use
+                  boxShadow: [
+                    BoxShadow(
+                        // ignore: deprecated_member_use
+                        color: Colors.black.withOpacity(0.2),
+                        blurRadius: 10,
+                        spreadRadius: 2,
+                        offset: Offset(0, 5))
                   ],
                 ),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "Forgot Password",
+                        style: GoogleFonts.getFont("Roboto Condensed",
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      ),
+                      SizedBox(height: 20),
+                      buildInputField(mailController, 'Email'),
+                      SizedBox(height: 15),
+                      GestureDetector(
+                        onTap: () {
+                          if (_formKey.currentState!.validate()) {
+                            setState(() {
+                              email = mailController.text;
+                              mailController.clear();
+                            });
+                            Forgot();
+                          }
+                        },
+                        child:
+                            buildButton('Forgot Password', Colors.blue[600]!),
+                      ),
+                      SizedBox(height: 15),
+                    ],
+                  ),
+                ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
