@@ -1,3 +1,4 @@
+import 'package:explore_uk/pages/navigation/bottombar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,10 +19,21 @@ class _TalukNavigationState extends State<TalukNavigation> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 50, 25, 15),
+            padding: EdgeInsets.fromLTRB(20, 50, 25, 15),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    child: Icon(
+                      Icons.arrow_back,
+                      size: 28,
+                    ),
+                  ),
+                ),
                 IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -43,7 +55,7 @@ class _TalukNavigationState extends State<TalukNavigation> {
           Expanded(child: widget.child),
         ],
       ),
-      // bottomNavigationBar: BottomBar(selectedIndex: 2),
+      bottomNavigationBar: BottomBar(selectedIndex: 2),
     );
   }
 }

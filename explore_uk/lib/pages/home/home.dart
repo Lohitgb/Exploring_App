@@ -1,3 +1,4 @@
+import 'package:explore_uk/pages/home/taluks/kwr_places.dart';
 import 'package:explore_uk/pages/navigation/bottombar.dart';
 import 'package:explore_uk/pages/home/places/honnavr/honnavr.dart';
 import 'package:explore_uk/pages/home/places/karwar/karwar.dart';
@@ -110,6 +111,19 @@ class _Homepage1State extends State<HomePage> {
     'beaches'
   ];
 
+  final Map<String, Widget> TalukPages = {
+    'Karwar': KwrPlaces(),
+    // 'Ankola': KwrPlaces(),
+    // 'Kumta': KwrPlaces(),
+    // 'Honnavar': KwrPlaces(),
+    // 'Bhatkal': KwrPlaces(),
+    // 'Sirsi': KwrPlaces(),
+    // 'Yellapur': KwrPlaces(),
+    // 'Mundgod': KwrPlaces(),
+    // 'Haliyal': KwrPlaces(),
+    // 'Joida': KwrPlaces(),
+  };
+
   // Mapping places to their respective pages
   final Map<String, Widget> placePages = {
     'Mirjan': Mirjan(),
@@ -194,7 +208,16 @@ class _Homepage1State extends State<HomePage> {
                     shrinkWrap: true,
                     itemBuilder: (BuildContext context, int index) {
                       return InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          String taluk = Taluk[index]['name']!;
+                          Widget destinationPage =
+                              TalukPages[taluk] ?? KwrPlaces();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => destinationPage),
+                          );
+                        },
                         child: Container(
                           width: 165,
                           padding: EdgeInsets.all(20),
