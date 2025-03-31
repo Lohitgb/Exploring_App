@@ -1,4 +1,14 @@
+import 'package:explore_uk/pages/home/taluks/ank_places.dart';
+import 'package:explore_uk/pages/home/taluks/bhtkl_places.dart';
+import 'package:explore_uk/pages/home/taluks/haliyal_places.dart';
+import 'package:explore_uk/pages/home/taluks/hnr_places.dart';
+import 'package:explore_uk/pages/home/taluks/joida_places.dart';
+import 'package:explore_uk/pages/home/taluks/kmt_places.dart';
 import 'package:explore_uk/pages/home/taluks/kwr_places.dart';
+import 'package:explore_uk/pages/home/taluks/mundgod_places.dart';
+import 'package:explore_uk/pages/home/taluks/sidpr_places.dart';
+import 'package:explore_uk/pages/home/taluks/sirsi_places.dart';
+import 'package:explore_uk/pages/home/taluks/ylpr_places.dart';
 import 'package:explore_uk/pages/navigation/bottombar.dart';
 import 'package:explore_uk/pages/home/places/honnavr/honnavr.dart';
 import 'package:explore_uk/pages/home/places/karwar/karwar.dart';
@@ -33,7 +43,7 @@ class _Homepage1State extends State<HomePage> {
     },
     {
       'image': 'assets/images/hnr.jpg',
-      'name': 'Honnvar',
+      'name': 'Honnavar',
     },
     {
       'image': 'assets/images/mir1.jpg',
@@ -113,15 +123,16 @@ class _Homepage1State extends State<HomePage> {
 
   final Map<String, Widget> TalukPages = {
     'Karwar': KwrPlaces(),
-    // 'Ankola': KwrPlaces(),
-    // 'Kumta': KwrPlaces(),
-    // 'Honnavar': KwrPlaces(),
-    // 'Bhatkal': KwrPlaces(),
-    // 'Sirsi': KwrPlaces(),
-    // 'Yellapur': KwrPlaces(),
-    // 'Mundgod': KwrPlaces(),
-    // 'Haliyal': KwrPlaces(),
-    // 'Joida': KwrPlaces(),
+    'Ankola': AnkolaPlaces(),
+    'Kumta': KmtPlaces(),
+    'Honnavar': HnrPlaces(),
+    'Bhatkal': BhtkalPlaces(),
+    'Sirsi': SirsiPlaces(),
+    'Siddapur': SidprPlaces(),
+    'Yellapur': YlprPlaces(),
+    'Mundgod': MundgodPlaces(),
+    'Haliyal': HaliyalPlaces(),
+    'Joida': JoidPlaces(),
   };
 
   // Mapping places to their respective pages

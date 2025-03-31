@@ -19,7 +19,7 @@ class _TalukNavigationState extends State<TalukNavigation> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.fromLTRB(20, 50, 25, 15),
+            padding: EdgeInsets.fromLTRB(20, 20, 25, 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
