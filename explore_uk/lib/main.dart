@@ -25,10 +25,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: title,
-      theme: ThemeData(scaffoldBackgroundColor: Colors.amber[100]),
-      home: const LandingPage(),
-    );
+        debugShowCheckedModeBanner: false,
+        title: title,
+        theme: ThemeData(scaffoldBackgroundColor: Colors.amber[100]),
+        home: const LandingPage());
+    // home: const KwrPlaces());
   }
 }

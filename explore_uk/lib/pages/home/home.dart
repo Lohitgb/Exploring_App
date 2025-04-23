@@ -1,3 +1,14 @@
+import 'package:explore_uk/pages/home/taluks/ank_places.dart';
+import 'package:explore_uk/pages/home/taluks/bhtkl_places.dart';
+import 'package:explore_uk/pages/home/taluks/haliyal_places.dart';
+import 'package:explore_uk/pages/home/taluks/hnr_places.dart';
+import 'package:explore_uk/pages/home/taluks/joida_places.dart';
+import 'package:explore_uk/pages/home/taluks/kmt_places.dart';
+import 'package:explore_uk/pages/home/taluks/kwr_places.dart';
+import 'package:explore_uk/pages/home/taluks/mundgod_places.dart';
+import 'package:explore_uk/pages/home/taluks/sidpr_places.dart';
+import 'package:explore_uk/pages/home/taluks/sirsi_places.dart';
+import 'package:explore_uk/pages/home/taluks/ylpr_places.dart';
 import 'package:explore_uk/pages/navigation/bottombar.dart';
 import 'package:explore_uk/pages/home/places/honnavr/honnavr.dart';
 import 'package:explore_uk/pages/home/places/karwar/karwar.dart';
@@ -32,7 +43,7 @@ class _Homepage1State extends State<HomePage> {
     },
     {
       'image': 'assets/images/hnr.jpg',
-      'name': 'Honnvar',
+      'name': 'Honnavar',
     },
     {
       'image': 'assets/images/mir1.jpg',
@@ -109,6 +120,20 @@ class _Homepage1State extends State<HomePage> {
     'trekking',
     'beaches'
   ];
+
+  final Map<String, Widget> TalukPages = {
+    'Karwar': KwrPlaces(),
+    'Ankola': AnkolaPlaces(),
+    'Kumta': KmtPlaces(),
+    'Honnavar': HnrPlaces(),
+    'Bhatkal': BhtkalPlaces(),
+    'Sirsi': SirsiPlaces(),
+    'Siddapur': SidprPlaces(),
+    'Yellapur': YlprPlaces(),
+    'Mundgod': MundgodPlaces(),
+    'Haliyal': HaliyalPlaces(),
+    'Joida': JoidPlaces(),
+  };
 
   // Mapping places to their respective pages
   final Map<String, Widget> placePages = {
@@ -194,7 +219,16 @@ class _Homepage1State extends State<HomePage> {
                     shrinkWrap: true,
                     itemBuilder: (BuildContext context, int index) {
                       return InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          String taluk = Taluk[index]['name']!;
+                          Widget destinationPage =
+                              TalukPages[taluk] ?? KwrPlaces();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => destinationPage),
+                          );
+                        },
                         child: Container(
                           width: 165,
                           padding: EdgeInsets.all(20),

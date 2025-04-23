@@ -12,6 +12,9 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
+    // final size = MediaQuery.of(context).size;
+    // final height = size.height;
+    // final width = size.width;
     return Scaffold(
       body: Container(
         padding: EdgeInsets.fromLTRB(25, 93, 23, 48),
