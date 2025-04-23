@@ -79,6 +79,9 @@ class _ForgotState extends State<Forgot> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final height = size.height;
+    final width = size.width;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
@@ -98,8 +101,9 @@ class _ForgotState extends State<Forgot> {
             ),
             Center(
               child: Container(
-                padding: EdgeInsets.all(20),
-                margin: EdgeInsets.symmetric(horizontal: 30),
+                padding: EdgeInsets.all(width * 0.05),
+                margin: EdgeInsets.symmetric(horizontal: width * 0.08),
+                width: width < 500 ? double.infinity : 400,
                 decoration: BoxDecoration(
                   // ignore: deprecated_member_use
                   color: Colors.white.withOpacity(0.5),

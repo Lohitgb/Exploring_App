@@ -70,6 +70,10 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final width = size.width;
+    final height = size.height;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
@@ -87,10 +91,10 @@ class _SignInState extends State<SignIn> {
               child: Container(color: Colors.white.withOpacity(0.1)),
             ),
             Center(
-              // Centering the form
               child: Container(
-                padding: EdgeInsets.all(20),
-                margin: EdgeInsets.symmetric(horizontal: 30),
+                padding: EdgeInsets.all(width * 0.05), // responsive padding
+                margin: EdgeInsets.symmetric(horizontal: width * 0.08),
+                width: width < 500 ? double.infinity : 400, // max width cap
                 decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(20),
@@ -106,22 +110,23 @@ class _SignInState extends State<SignIn> {
                 child: Form(
                   key: _formkey,
                   child: Column(
-                    mainAxisSize:
-                        MainAxisSize.min, // Prevents unnecessary space
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
                         "Sign In",
-                        style: GoogleFonts.getFont("Roboto Condensed",
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
+                        style: GoogleFonts.getFont(
+                          "Roboto Condensed",
+                          fontSize: width < 400 ? 20 : 26,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: height * 0.025),
                       buildInputField(mailcontroller, 'Email'),
-                      SizedBox(height: 15),
+                      SizedBox(height: height * 0.02),
                       buildInputField(passwordController, 'Password',
                           obscureText: true),
-                      SizedBox(height: 20),
+                      SizedBox(height: height * 0.03),
                       GestureDetector(
                         onTap: () {
                           if (_formkey.currentState!.validate()) {
@@ -134,7 +139,7 @@ class _SignInState extends State<SignIn> {
                         },
                         child: buildButton('Sign In', Colors.blue[600]!),
                       ),
-                      SizedBox(height: 15),
+                      SizedBox(height: height * 0.02),
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
@@ -148,7 +153,7 @@ class _SignInState extends State<SignIn> {
                               fontWeight: FontWeight.w700, fontSize: 15),
                         ),
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: height * 0.015),
                       Text(
                         'SignIn with',
                         style: GoogleFonts.getFont('Roboto Condensed',
@@ -156,9 +161,9 @@ class _SignInState extends State<SignIn> {
                             fontWeight: FontWeight.w700,
                             color: Color(0xFF273671)),
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: height * 0.015),
                       buildSocialButtons(),
-                      SizedBox(height: 15),
+                      SizedBox(height: height * 0.02),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -197,6 +202,136 @@ class _SignInState extends State<SignIn> {
       ),
     );
   }
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   return Scaffold(
+  //     resizeToAvoidBottomInset: false,
+  //     backgroundColor: Colors.white,
+  //     body: GestureDetector(
+  //       onTap: () => FocusScope.of(context).unfocus(),
+  //       child: Stack(
+  //         fit: StackFit.expand,
+  //         children: [
+  //           Image.asset(
+  //             'assets/images/rain.jpg',
+  //             fit: BoxFit.cover,
+  //           ),
+  //           BackdropFilter(
+  //             filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+  //             child: Container(color: Colors.white.withOpacity(0.1)),
+  //           ),
+  //           Center(
+  //             // Centering the form
+  //             child: Container(
+  //               padding: EdgeInsets.all(20),
+  //               margin: EdgeInsets.symmetric(horizontal: 30),
+  //               decoration: BoxDecoration(
+  //                 color: Colors.white.withOpacity(0.5),
+  //                 borderRadius: BorderRadius.circular(20),
+  //                 boxShadow: [
+  //                   BoxShadow(
+  //                     color: Colors.black.withOpacity(0.2),
+  //                     blurRadius: 10,
+  //                     spreadRadius: 2,
+  //                     offset: Offset(0, 5),
+  //                   ),
+  //                 ],
+  //               ),
+  //               child: Form(
+  //                 key: _formkey,
+  //                 child: Column(
+  //                   mainAxisSize:
+  //                       MainAxisSize.min, // Prevents unnecessary space
+  //                   children: [
+  //                     Text(
+  //                       "Sign In",
+  //                       style: GoogleFonts.getFont("Roboto Condensed",
+  //                           fontSize: 22,
+  //                           fontWeight: FontWeight.bold,
+  //                           color: Colors.black),
+  //                     ),
+  //                     SizedBox(height: 20),
+  //                     buildInputField(mailcontroller, 'Email'),
+  //                     SizedBox(height: 15),
+  //                     buildInputField(passwordController, 'Password',
+  //                         obscureText: true),
+  //                     SizedBox(height: 20),
+  //                     GestureDetector(
+  //                       onTap: () {
+  //                         if (_formkey.currentState!.validate()) {
+  //                           setState(() {
+  //                             email = mailcontroller.text;
+  //                             password = passwordController.text;
+  //                           });
+  //                           signIn();
+  //                         }
+  //                       },
+  //                       child: buildButton('Sign In', Colors.blue[600]!),
+  //                     ),
+  //                     SizedBox(height: 15),
+  //                     GestureDetector(
+  //                       onTap: () {
+  //                         Navigator.push(
+  //                             context,
+  //                             MaterialPageRoute(
+  //                                 builder: (context) => Forgot()));
+  //                       },
+  //                       child: Text(
+  //                         'Forgot Password?',
+  //                         style: GoogleFonts.getFont('Roboto Condensed',
+  //                             fontWeight: FontWeight.w700, fontSize: 15),
+  //                       ),
+  //                     ),
+  //                     SizedBox(height: 10),
+  //                     Text(
+  //                       'SignIn with',
+  //                       style: GoogleFonts.getFont('Roboto Condensed',
+  //                           fontSize: 15,
+  //                           fontWeight: FontWeight.w700,
+  //                           color: Color(0xFF273671)),
+  //                     ),
+  //                     SizedBox(height: 10),
+  //                     buildSocialButtons(),
+  //                     SizedBox(height: 15),
+  //                     Row(
+  //                       mainAxisAlignment: MainAxisAlignment.center,
+  //                       children: [
+  //                         Text(
+  //                           "Don't have an account?",
+  //                           style: GoogleFonts.getFont('Roboto Condensed',
+  //                               fontSize: 15,
+  //                               fontWeight: FontWeight.w700,
+  //                               color: Colors.black),
+  //                         ),
+  //                         SizedBox(width: 5),
+  //                         GestureDetector(
+  //                           onTap: () {
+  //                             Navigator.push(
+  //                                 context,
+  //                                 MaterialPageRoute(
+  //                                     builder: (context) => Signup()));
+  //                           },
+  //                           child: Text(
+  //                             'Create',
+  //                             style: GoogleFonts.getFont("Roboto Condensed",
+  //                                 fontSize: 15,
+  //                                 fontWeight: FontWeight.w700,
+  //                                 color: Colors.black),
+  //                           ),
+  //                         ),
+  //                       ],
+  //                     )
+  //                   ],
+  //                 ),
+  //               ),
+  //             ),
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 
   Widget buildInputField(TextEditingController controller, String hint,
       {bool obscureText = false}) {
